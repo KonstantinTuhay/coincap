@@ -1,6 +1,46 @@
 import { JSX } from "react";
+import { CoinData } from "../components/CoinData";
 
 export const MainPage = (): JSX.Element => {
+  const data = [
+    {
+      id: 1,
+      scr: "BTC",
+      name: "Bitcoin",
+      vwap: 22.0,
+      change: "2.02$",
+      marketCap: 446.4,
+      price: "23162.22$",
+    },
+    {
+      id: 1,
+      scr: "BTC",
+      name: "Bitcoin",
+      vwap: 22.0,
+      change: "2.02$",
+      marketCap: 446.4,
+      price: "23162.22$",
+    },
+    {
+      id: 1,
+      scr: "BTC",
+      name: "Bitcoin",
+      vwap: 22.0,
+      change: "2.02$",
+      marketCap: 446.4,
+      price: "23162.22$",
+    },
+    {
+      id: 1,
+      scr: "BTC",
+      name: "Bitcoin",
+      vwap: 22.0,
+      change: "2.02$",
+      marketCap: 446.4,
+      price: "23162.22$",
+    },
+  ];
+
   return (
     <>
       <table style={{ border: "1" }}>
@@ -17,46 +57,9 @@ export const MainPage = (): JSX.Element => {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>1</td>
-            <td>BTC</td>
-            <td>Bitcoin</td>
-            <td>22.000</td>
-            <td>2.02$</td>
-            <td>446.4</td>
-            <td>23162.22$</td>
-            <td>+</td>
-          </tr>
-          <tr>
-            <td>1</td>
-            <td>BTC</td>
-            <td>Bitcoin</td>
-            <td>22.000</td>
-            <td>2.02$</td>
-            <td>446.4</td>
-            <td>23162.22$</td>
-            <td>+</td>
-          </tr>
-          <tr>
-            <td>1</td>
-            <td>BTC</td>
-            <td>Bitcoin</td>
-            <td>22.000</td>
-            <td>2.02$</td>
-            <td>446.4</td>
-            <td>23162.22$</td>
-            <td>+</td>
-          </tr>
-          <tr>
-            <td>1</td>
-            <td>BTC</td>
-            <td>Bitcoin</td>
-            <td>22.000</td>
-            <td>2.02$</td>
-            <td>446.4</td>
-            <td>23162.22$</td>
-            <td>+</td>
-          </tr>
+          {data.map((coin) => {
+            return <CoinData key={crypto.randomUUID()} coin={coin} />;
+          })}
         </tbody>
       </table>
     </>
