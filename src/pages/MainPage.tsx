@@ -5,6 +5,7 @@ export const MainPage = (): JSX.Element => {
   return (
     <>
       <Table />
+      <SwitchCoins />
     </>
   );
 };
