@@ -3,8 +3,8 @@ import { apiCoins } from "./apiCoins";
 import popularCoins from "./slices/popularCoins";
 
 export const store = configureStore({
-  popularCoins: popularCoins,
   reducer: {
+    popularCoins: popularCoins,
     [apiCoins.reducerPath]: apiCoins.reducer,
   },
   middleware: (getDefaultMiddleware) =>
