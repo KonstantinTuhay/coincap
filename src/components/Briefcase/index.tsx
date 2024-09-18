@@ -5,7 +5,7 @@ export const Briefcase = (): JSX.Element => {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate("/yourcase");
+    navigate("/yourbriefcase");
   };
 
   return (
