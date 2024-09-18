@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-// import { MainPage } from "./pages/MainPage/MainPage";
+import { MainPage } from "./pages/MainPage";
 import { Header } from "./components/Header/Header";
 import { CoinInformation } from "./pages/CoinInformation";
 
@@ -8,8 +8,8 @@ function App() {
     <>
       <Routes>
         <Route path="/" element={<Header />}>
-          <Route path="/" element={<CoinInformation />} />
-          {/* <Route path="/" element={<MainPage />} /> */}
+          <Route path="/" element={<MainPage />} />
+          <Route path="coininformation" element={<CoinInformation />} />
         </Route>
       </Routes>
     </>

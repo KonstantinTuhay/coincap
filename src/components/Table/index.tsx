@@ -16,7 +16,7 @@ export const Table = (): JSX.Element => {
     {
       id: 1,
       scr: "BTC",
-      name: "Bitcoin",
+      name: "Eitherium",
       vwap: 22.0,
       change: "2.02$",
       marketCap: 446.4,
@@ -25,7 +25,7 @@ export const Table = (): JSX.Element => {
     {
       id: 1,
       scr: "BTC",
-      name: "Bitcoin",
+      name: "DogeCoin",
       vwap: 22.0,
       change: "2.02$",
       marketCap: 446.4,
@@ -34,7 +34,7 @@ export const Table = (): JSX.Element => {
     {
       id: 1,
       scr: "BTC",
-      name: "Bitcoin",
+      name: "Coin",
       vwap: 22.0,
       change: "2.02$",
       marketCap: 446.4,
