@@ -1,7 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { apiCoins } from "./apiCoins";
+import popularCoins from "./slices/popularCoins";
 
 export const store = configureStore({
+  popularCoins: popularCoins,
   reducer: {
     [apiCoins.reducerPath]: apiCoins.reducer,
   },
