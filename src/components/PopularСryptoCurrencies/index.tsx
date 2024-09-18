@@ -1,6 +1,10 @@
 import { JSX } from "react";
+import { useAppSelector } from "../../hooks/hooks";
+import { PopularCoin } from "../PopularCoin";
 
 export const PopularСryptoCurrencies = (): JSX.Element => {
+  const popularCoins = useAppSelector((state) => state.popularCoins);
+
   return (
     <div
       style={{
@@ -9,33 +13,9 @@ export const PopularСryptoCurrencies = (): JSX.Element => {
       }}
     >
       <p>Popular cryptocurrencies:</p>
-      <div
-        style={{
-          display: "flex",
-        }}
-      >
-        <p
-          style={{
-            margin: "5px",
-          }}
-        >
-          Bitcoin
-        </p>
-        <p
-          style={{
-            margin: "5px",
-          }}
-        >
-          Etherium
-        </p>
-        <p
-          style={{
-            margin: "5px",
-          }}
-        >
-          Tether
-        </p>
-      </div>
+      {popularCoins.map((popularCoin) => (
+        <PopularCoin popularCoin={popularCoin} />
+      ))}
     </div>
   );
 };
