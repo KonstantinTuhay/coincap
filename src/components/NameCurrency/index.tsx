@@ -1,6 +1,13 @@
 import { JSX } from "react";
+import { useNavigate } from "react-router-dom";
 
 export const NameCurrency = (): JSX.Element => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate("/");
+  };
+
   return (
     <div>
       <p>SymbolCurrency (BTC)</p>
@@ -47,7 +54,7 @@ export const NameCurrency = (): JSX.Element => {
           </tr>
         </tbody>
       </table>
-      <button>Назад</button>
+      <button onClick={() => handleClick()}>Назад</button>
     </div>
   );
 };
