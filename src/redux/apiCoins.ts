@@ -4,7 +4,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 //   Authorization: `Bearer ${localStorage.getItem("token")}`,
 // };
 
-export type Coins = {
+export type Data = {
   id: string;
   rank: string;
   symbol: string;
@@ -19,11 +19,15 @@ export type Coins = {
   explorer: string;
 };
 
+export type Coins = {
+  data: Data[];
+  timestamp: number;
+};
+
 export const apiCoins = createApi({
-  reducerPath: "pokemonApi",
   baseQuery: fetchBaseQuery({ baseUrl: "https://api.coincap.io/v2" }),
   endpoints: (builder) => ({
-    getCoins: builder.query<Coins[], void>({
+    getCoins: builder.query<Data[], void>({
       query: () => {
         return {
           url: `/assets`,
@@ -31,6 +35,7 @@ export const apiCoins = createApi({
           //   headers,
         };
       },
+      transformResponse: (response: Coins) => response.data,
     }),
   }),
 });

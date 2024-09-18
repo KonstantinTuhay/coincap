@@ -5,6 +5,8 @@ import { useGetCoinsQuery } from "../../redux/apiCoins";
 
 export const Table = (): JSX.Element => {
   const { data, error, isLoading } = useGetCoinsQuery();
+  console.log(data);
+  console.log(Array.isArray(data));
 
   if (isLoading) {
     return <p>Loading...</p>;
@@ -31,9 +33,11 @@ export const Table = (): JSX.Element => {
         <HeadTable />
       </thead>
       <tbody>
-        {data?.map((coin) => {
-          return <CoinData key={crypto.randomUUID()} coin={coin} />;
-        })}
+        {data?.length ? (
+          data.map((coin) => <CoinData key={coin.id} coin={coin} />)
+        ) : (
+          <h2>No coins</h2>
+        )}
       </tbody>
     </table>
   );

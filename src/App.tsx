@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import { MainPage } from "./pages/MainPage";
 import { Header } from "./components/Header/Header";
-import { CoinInformation } from "./pages/CoinInformation";
+// import { CoinInformation } from "./pages/CoinInformation";
 
 function App() {
   return (
