@@ -1,13 +1,20 @@
 import { JSX } from "react";
+import { useNavigate } from "react-router-dom";
 
 export const Briefcase = (): JSX.Element => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate("/yourcase");
+  };
+
   return (
     <div
       style={{
         display: "flex",
       }}
     >
-      <p>Портфель</p>
+      <div onClick={() => handleClick()}>Портфель</div>
       <div
         style={{
           display: "flex",
