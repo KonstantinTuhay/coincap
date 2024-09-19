@@ -1,5 +1,9 @@
-import { JSX } from "react";
+import { JSX, ChangeEvent } from "react";
 import { useNavigate } from "react-router-dom";
+import { useGetDetailsCoinQuery } from "../../redux/apiCoins";
+import { useAppSelector, useAppDispatch } from "../../hooks/hooks";
+import { getQuantity } from "../../redux/slices/getQuantityCoins";
+import { getYourCoin } from "../../redux/slices/listMyCoins";
 
 export const NameCurrency = (): JSX.Element => {
   const navigate = useNavigate();
@@ -8,17 +12,54 @@ export const NameCurrency = (): JSX.Element => {
     navigate("/");
   };
 
+  const dispatch = useAppDispatch();
+  const currentId = useAppSelector((state) => state.getDetailsCoin);
+  const currentQuantity = useAppSelector((state) => state.getQuantityCoins);
+
+  const { data, error, isLoading } = useGetDetailsCoinQuery(currentId);
+
+  if (isLoading) {
+    return <p>Loading...</p>;
+  }
+
+  if (error) {
+    if ("status" in error) {
+      const errMsg =
+        "error" in error ? error.error : JSON.stringify(error.data);
+
+      return (
+        <div>
+          <div>An error has occurred:</div>
+          <div>{errMsg}</div>
+        </div>
+      );
+    }
+    return <div>Error: {error.message}</div>;
+  }
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    dispatch(getQuantity(e?.target.value));
+  };
+
+  const setQuantity = () => {
+    const newObj = { ...data, quantity: currentQuantity };
+    dispatch(getYourCoin(newObj));
+  };
+
   return (
     <div>
-      <p>SymbolCurrency (BTC)</p>
-      <p>name(Bitcoin) / USD</p>
+      <p>{data?.symbol} </p>
+      <p>{data?.name} / USD</p>
       <div>
         <p>График ----------------------------------</p>
       </div>
       <div>
         <p>Введите количество</p>
-        <input placeholder="Введите количество" />
-        <button>Купить</button>
+        <input
+          placeholder="Введите количество"
+          onChange={(e) => handleChange(e)}
+        />
+        <button onClick={() => setQuantity()}>Купить</button>
       </div>
       <table>
         <thead>

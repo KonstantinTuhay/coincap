@@ -1,6 +1,8 @@
 import { JSX } from "react";
 import { Data } from "../../redux/apiCoins";
 import { useNavigate } from "react-router-dom";
+import { useAppDispatch } from "../../hooks/hooks";
+import { getCoin } from "../../redux/slices/getDetailsCoin";
 
 type Coin = {
   coin: Data;
@@ -9,12 +11,15 @@ type Coin = {
 export const CoinData = ({ coin }: Coin): JSX.Element => {
   const navigate = useNavigate();
 
-  const handleClick = () => {
+  const dispatch = useAppDispatch();
+
+  const handleClick = (id: string) => {
+    dispatch(getCoin(id));
     navigate("/coininformation");
   };
 
   const {
-    // id,
+    id,
     rank,
     symbol,
     name,
@@ -28,7 +33,7 @@ export const CoinData = ({ coin }: Coin): JSX.Element => {
     // explorer,
   } = coin;
   return (
-    <tr onClick={() => handleClick()}>
+    <tr onClick={() => handleClick(id)}>
       <td>{rank}</td>
       <td>{symbol}</td>
       <td>{name}</td>
