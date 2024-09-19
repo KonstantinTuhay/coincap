@@ -1,9 +1,8 @@
-import { JSX, ChangeEvent } from "react";
+import { JSX } from "react";
 import { useNavigate } from "react-router-dom";
 import { useGetDetailsCoinQuery } from "../../redux/apiCoins";
-import { useAppSelector, useAppDispatch } from "../../hooks/hooks";
-import { getQuantity } from "../../redux/slices/getQuantityCoins";
-import { getYourCoin } from "../../redux/slices/listMyCoins";
+import { useAppSelector } from "../../hooks/hooks";
+import { AmountForm } from "../AmountForm";
 
 export const NameCurrency = (): JSX.Element => {
   const navigate = useNavigate();
@@ -12,9 +11,7 @@ export const NameCurrency = (): JSX.Element => {
     navigate("/");
   };
 
-  const dispatch = useAppDispatch();
   const currentId = useAppSelector((state) => state.getDetailsCoin);
-  const currentQuantity = useAppSelector((state) => state.getQuantityCoins);
 
   const { data, error, isLoading } = useGetDetailsCoinQuery(currentId);
 
@@ -37,15 +34,6 @@ export const NameCurrency = (): JSX.Element => {
     return <div>Error: {error.message}</div>;
   }
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    dispatch(getQuantity(e?.target.value));
-  };
-
-  const setQuantity = () => {
-    const newObj = { ...data, quantity: currentQuantity };
-    dispatch(getYourCoin(newObj));
-  };
-
   return (
     <div>
       <p>{data?.symbol} </p>
@@ -54,12 +42,7 @@ export const NameCurrency = (): JSX.Element => {
         <p>График ----------------------------------</p>
       </div>
       <div>
-        <p>Введите количество</p>
-        <input
-          placeholder="Введите количество"
-          onChange={(e) => handleChange(e)}
-        />
-        <button onClick={() => setQuantity()}>Купить</button>
+        <AmountForm />
       </div>
       <table>
         <thead>

@@ -1,18 +1,11 @@
-import { JSX, ChangeEvent } from "react";
-import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
-import { getYourCoin } from "../../redux/slices/listMyCoins";
-import { getQuantity } from "../../redux/slices/getQuantityCoins";
+import { JSX } from "react";
+import { useAppSelector } from "../../hooks/hooks";
 import { useGetDetailsCoinQuery } from "../../redux/apiCoins";
 import { useNavigate } from "react-router-dom";
+import { AmountForm } from "../AmountForm";
 
 export const AddCoin = (): JSX.Element => {
-  const dispatch = useAppDispatch();
-  const currentQuantity = useAppSelector((state) => state.getQuantityCoins);
   const currentId = useAppSelector((state) => state.getDetailsCoin);
-
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    dispatch(getQuantity(e?.target.value));
-  };
 
   const navigate = useNavigate();
 
@@ -41,23 +34,12 @@ export const AddCoin = (): JSX.Element => {
     return <div>Error: {error.message}</div>;
   }
 
-  const setQuantity = () => {
-    const newObj = { ...data, quantity: currentQuantity };
-    dispatch(getYourCoin(newObj));
-  };
-
   return (
     <div>
       <h2>Buy {data?.name}</h2>
 
       <div>
-        <p>Enter quantity:</p>
-
-        <input
-          placeholder="Введите количество"
-          onChange={(e) => handleChange(e)}
-        />
-        <button onClick={() => setQuantity()}>Купить</button>
+        <AmountForm />
       </div>
 
       <button onClick={() => clickBack()}>Назад</button>
