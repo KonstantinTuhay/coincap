@@ -1,7 +1,15 @@
 import { JSX } from "react";
 import { useNavigate } from "react-router-dom";
+import { useAppSelector } from "../../hooks/hooks";
 
 export const Briefcase = (): JSX.Element => {
+  const getTotal = useAppSelector((state) => state.listMyCoins);
+  const amounts = getTotal.reduce(
+    (accum, item) => (accum += +item.priceUsd),
+    0
+  );
+  console.log(amounts);
+
   const navigate = useNavigate();
 
   const handleClick = () => {
@@ -22,7 +30,7 @@ export const Briefcase = (): JSX.Element => {
         }}
       >
         <p>Total:</p>
-        <p>SUM USD</p>
+        <p>{amounts} USD</p>
       </div>
     </div>
   );
