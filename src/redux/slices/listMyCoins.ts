@@ -25,8 +25,11 @@ const listMyCoins = createSlice({
     getYourCoin: (state, action: PayloadAction<InitialState[]>) => {
       state.push(action.payload);
     },
+    sellCoin: (state, action: PayloadAction<string>) => {
+      return state.filter((userCoins) => userCoins.id !== action.payload);
+    },
   },
 });
 
-export const { getYourCoin } = listMyCoins.actions;
+export const { getYourCoin, sellCoin } = listMyCoins.actions;
 export default listMyCoins.reducer;
