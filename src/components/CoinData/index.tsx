@@ -18,7 +18,8 @@ export const CoinData = ({ coin }: Coin): JSX.Element => {
     navigate("/coininformation");
   };
 
-  const addCoin = () => {
+  const addCoin = (id: string) => {
+    dispatch(getCoin(id));
     navigate("/addcoin");
   };
 
@@ -47,7 +48,7 @@ export const CoinData = ({ coin }: Coin): JSX.Element => {
         <td>{marketCapUsd}</td>
         <td>{priceUsd}</td>
       </tr>
-      <td onClick={() => addCoin()}>+</td>
+      <td onClick={() => addCoin(id)}>+</td>
     </>
   );
 };
