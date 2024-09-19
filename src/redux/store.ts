@@ -3,9 +3,11 @@ import { apiCoins } from "./apiCoins";
 import popularCoins from "./slices/popularCoins";
 import getDetailsCoin from "./slices/getDetailsCoin";
 import getQuantityCoins from "./slices/getQuantityCoins";
+import listMyCoins from "./slices/listMyCoins";
 
 export const store = configureStore({
   reducer: {
+    listMyCoins: listMyCoins,
     getQuantityCoins: getQuantityCoins,
     getDetailsCoin: getDetailsCoin,
     popularCoins: popularCoins,

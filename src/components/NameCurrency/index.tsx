@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useGetDetailsCoinQuery } from "../../redux/apiCoins";
 import { useAppSelector, useAppDispatch } from "../../hooks/hooks";
 import { getQuantity } from "../../redux/slices/getQuantityCoins";
+import { getYourCoin } from "../../redux/slices/listMyCoins";
 
 export const NameCurrency = (): JSX.Element => {
   const navigate = useNavigate();
@@ -40,7 +41,10 @@ export const NameCurrency = (): JSX.Element => {
     dispatch(getQuantity(e?.target.value));
   };
 
-  const setQuantity = () => {};
+  const setQuantity = () => {
+    const newObj = { ...data, quantity: currentQuantity };
+    dispatch(getYourCoin(newObj));
+  };
 
   return (
     <div>
