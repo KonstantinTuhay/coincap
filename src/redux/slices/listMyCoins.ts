@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-type InitialState = {
+export type InitialState = {
   id: string;
   rank: string;
   symbol: string;
