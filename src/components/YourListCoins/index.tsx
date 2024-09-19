@@ -1,10 +1,12 @@
 import { JSX } from "react";
+import { useAppDispatch } from "../../hooks/hooks";
+import { sellCoin } from "../../redux/slices/listMyCoins";
 
 export const YourListCoins = ({ yourCoin }): JSX.Element => {
   console.log(yourCoin);
 
   const {
-    // id,
+    id,
     // rank,
     // symbol,
     name,
@@ -19,6 +21,12 @@ export const YourListCoins = ({ yourCoin }): JSX.Element => {
     quantity,
   } = yourCoin;
 
+  const dispatch = useAppDispatch();
+
+  const handleSell = (id: string) => {
+    dispatch(sellCoin(id));
+  };
+
   return (
     <div>
       <tr>
@@ -26,6 +34,7 @@ export const YourListCoins = ({ yourCoin }): JSX.Element => {
         <td>{priceUsd}</td>
         <td>{quantity}</td>
         <td>{priceUsd}</td>
+        <button onClick={() => handleSell(id)}>sell</button>
       </tr>
     </div>
   );
