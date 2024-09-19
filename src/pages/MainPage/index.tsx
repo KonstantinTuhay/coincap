@@ -1,5 +1,4 @@
 import { JSX, useEffect } from "react";
-// import { Table } from "../../components/Table";
 import { SwitchCoins } from "../../components/SwitchCoins";
 import { useGetCoinsQuery } from "../../redux/apiCoins";
 import { useAppDispatch } from "../../hooks/hooks";
@@ -12,7 +11,6 @@ export const MainPage = (): JSX.Element => {
 
   useEffect(() => {
     dispatch(setPopularCoins(data?.slice(0, 3) || []));
-    // dispatch(setAllCoins(data || []));
   }, [data, dispatch]);
 
   if (isLoading) {
@@ -36,7 +34,6 @@ export const MainPage = (): JSX.Element => {
 
   return (
     <>
-      {/* <Table data={data || []} /> */}
       <SwitchCoins data={data || []} />
     </>
   );

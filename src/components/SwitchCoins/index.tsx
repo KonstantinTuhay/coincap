@@ -1,5 +1,4 @@
 import { JSX, useState } from "react";
-// import { useAppSelector } from "../../hooks/hooks";
 import { Coins } from "../../redux/apiCoins";
 import { HeadTable } from "../HeadTable";
 import { CoinData } from "../CoinData";
@@ -7,9 +6,6 @@ import { CoinData } from "../CoinData";
 export const SwitchCoins = ({ data }: Coins): JSX.Element => {
   const itemsPerPage = 10;
   const [currentPage, setCurrentPage] = useState(1);
-
-  // Подготовим данные
-  // const data = useAppSelector((state) => state.allCoins); // Твой массив данных
 
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
