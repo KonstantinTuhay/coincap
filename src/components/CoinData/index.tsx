@@ -18,6 +18,11 @@ export const CoinData = ({ coin }: Coin): JSX.Element => {
     navigate("/coininformation");
   };
 
+  const addCoin = (id: string) => {
+    dispatch(getCoin(id));
+    navigate("/addcoin");
+  };
+
   const {
     id,
     rank,
@@ -33,15 +38,17 @@ export const CoinData = ({ coin }: Coin): JSX.Element => {
     // explorer,
   } = coin;
   return (
-    <tr onClick={() => handleClick(id)}>
-      <td>{rank}</td>
-      <td>{symbol}</td>
-      <td>{name}</td>
-      <td>{volumeUsd24Hr}</td>
-      <td>{changePercent24Hr}</td>
-      <td>{marketCapUsd}</td>
-      <td>{priceUsd}</td>
-      <td>+</td>
-    </tr>
+    <>
+      <tr onClick={() => handleClick(id)}>
+        <td>{rank}</td>
+        <td>{symbol}</td>
+        <td>{name}</td>
+        <td>{volumeUsd24Hr}</td>
+        <td>{changePercent24Hr}</td>
+        <td>{marketCapUsd}</td>
+        <td>{priceUsd}</td>
+      </tr>
+      <td onClick={() => addCoin(id)}>+</td>
+    </>
   );
 };
