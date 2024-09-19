@@ -1,5 +1,6 @@
 import { JSX } from "react";
 import { useNavigate } from "react-router-dom";
+import { useGetDetailsCoinQuery } from "../../redux/apiCoins";
 
 export const NameCurrency = (): JSX.Element => {
   const navigate = useNavigate();
@@ -7,6 +8,8 @@ export const NameCurrency = (): JSX.Element => {
   const handleClick = () => {
     navigate("/");
   };
+
+  const { data, error, isLoading } = useGetDetailsCoinQuery();
 
   return (
     <div>

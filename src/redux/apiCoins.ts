@@ -37,7 +37,17 @@ export const apiCoins = createApi({
       },
       transformResponse: (response: Coins) => response.data,
     }),
+    getDetailsCoin: builder.query<Data[], void>({
+      query: (id) => {
+        return {
+          url: `/assets/${id}`,
+          method: "GET",
+          //   headers,
+        };
+      },
+      transformResponse: (response: Coins) => response.data,
+    }),
   }),
 });
 
-export const { useGetCoinsQuery } = apiCoins;
+export const { useGetCoinsQuery, useGetDetailsCoinQuery } = apiCoins;
