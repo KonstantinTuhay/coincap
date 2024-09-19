@@ -3,15 +3,17 @@ import { SwitchCoins } from "../../components/SwitchCoins";
 import { useGetCoinsQuery } from "../../redux/apiCoins";
 import { useAppDispatch } from "../../hooks/hooks";
 import { setPopularCoins } from "../../redux/slices/popularCoins";
+import { changePrice } from "../../helpers/changePrice";
 
 export const MainPage = (): JSX.Element => {
   const { data, error, isLoading } = useGetCoinsQuery();
+  const newData = changePrice(data);
 
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    dispatch(setPopularCoins(data?.slice(0, 3) || []));
-  }, [data, dispatch]);
+    dispatch(setPopularCoins(newData?.slice(0, 3) || []));
+  }, [newData, dispatch]);
 
   if (isLoading) {
     return <p>Loading...</p>;
@@ -34,7 +36,7 @@ export const MainPage = (): JSX.Element => {
 
   return (
     <>
-      <SwitchCoins data={data || []} />
+      <SwitchCoins newData={newData || []} />
     </>
   );
 };
