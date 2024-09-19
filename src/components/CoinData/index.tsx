@@ -9,12 +9,12 @@ type Coin = {
 export const CoinData = ({ coin }: Coin): JSX.Element => {
   const navigate = useNavigate();
 
-  const handleClick = () => {
+  const handleClick = (id) => {
     navigate("/coininformation");
   };
 
   const {
-    // id,
+    id,
     rank,
     symbol,
     name,
@@ -28,7 +28,7 @@ export const CoinData = ({ coin }: Coin): JSX.Element => {
     // explorer,
   } = coin;
   return (
-    <tr onClick={() => handleClick()}>
+    <tr onClick={() => handleClick(id)}>
       <td>{rank}</td>
       <td>{symbol}</td>
       <td>{name}</td>
