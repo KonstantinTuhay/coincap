@@ -1,7 +1,8 @@
 import { JSX, ChangeEvent } from "react";
 import { useNavigate } from "react-router-dom";
 import { useGetDetailsCoinQuery } from "../../redux/apiCoins";
-import { useAppSelector } from "../../hooks/hooks";
+import { useAppSelector, useAppDispatch } from "../../hooks/hooks";
+import { getQuantity } from "../../redux/slices/getQuantityCoins";
 
 export const NameCurrency = (): JSX.Element => {
   const navigate = useNavigate();
@@ -10,8 +11,9 @@ export const NameCurrency = (): JSX.Element => {
     navigate("/");
   };
 
+  const dispatch = useAppDispatch();
   const currentId = useAppSelector((state) => state.getDetailsCoin);
-  console.log();
+  const currentQuantity = useAppSelector((state) => state.getQuantityCoins);
 
   const { data, error, isLoading } = useGetDetailsCoinQuery(currentId);
 
@@ -35,8 +37,10 @@ export const NameCurrency = (): JSX.Element => {
   }
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    console.log(e?.target.value);
+    dispatch(getQuantity(e?.target.value));
   };
+
+  const setQuantity = () => {};
 
   return (
     <div>
@@ -51,7 +55,7 @@ export const NameCurrency = (): JSX.Element => {
           placeholder="Введите количество"
           onChange={(e) => handleChange(e)}
         />
-        <button>Купить</button>
+        <button onClick={() => setQuantity()}>Купить</button>
       </div>
       <table>
         <thead>
