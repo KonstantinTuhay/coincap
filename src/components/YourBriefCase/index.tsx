@@ -15,14 +15,29 @@ export const YourBriefcase = (): JSX.Element => {
   return (
     <div>
       <h2>Investment Portfolio</h2>
+
       <button onClick={() => handleClick()}>Back</button>
-      {getYourCoins?.length ? (
-        getYourCoins.map((yourCoin) => (
-          <YourListCoins key={yourCoin.id} yourCoin={yourCoin} />
-        ))
-      ) : (
-        <h2>You don't have coins</h2>
-      )}
+
+      <table style={{ border: "1" }}>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          {getYourCoins?.length ? (
+            getYourCoins.map((yourCoin) => (
+              <YourListCoins key={yourCoin.id} yourCoin={yourCoin} />
+            ))
+          ) : (
+            <h2>You don't have coins</h2>
+          )}
+        </tbody>
+      </table>
+
       <p>Total: number $</p>
     </div>
   );
