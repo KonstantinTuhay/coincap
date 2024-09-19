@@ -21,7 +21,7 @@ export type Data = {
 
 export type Coins = {
   data: Data[];
-  timestamp: number;
+  timestamp?: number;
 };
 
 export const apiCoins = createApi({
