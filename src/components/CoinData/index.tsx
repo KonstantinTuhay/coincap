@@ -14,18 +14,18 @@ export const CoinData = ({ coin }: Coin): JSX.Element => {
   };
 
   const {
-    id,
+    // id,
     rank,
     symbol,
     name,
-    supply,
-    maxSupply,
+    // supply,
+    // maxSupply,
     marketCapUsd,
     volumeUsd24Hr,
     priceUsd,
     changePercent24Hr,
-    vwap24Hr,
-    explorer,
+    // vwap24Hr,
+    // explorer,
   } = coin;
   return (
     <tr onClick={() => handleClick()}>

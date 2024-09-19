@@ -1,12 +1,18 @@
-import { JSX } from "react";
+import { JSX, useEffect } from "react";
 import { HeadTable } from "../HeadTable";
 import { CoinData } from "../CoinData";
 import { useGetCoinsQuery } from "../../redux/apiCoins";
+import { useAppDispatch } from "../../hooks/hooks";
+import { setPopularCoins } from "../../redux/slices/popularCoins";
 
 export const Table = (): JSX.Element => {
   const { data, error, isLoading } = useGetCoinsQuery();
-  console.log(data);
-  console.log(Array.isArray(data));
+
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(setPopularCoins(data?.slice(0, 3) || []));
+  }, [data, dispatch]);
 
   if (isLoading) {
     return <p>Loading...</p>;
