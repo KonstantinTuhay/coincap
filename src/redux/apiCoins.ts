@@ -1,8 +1,8 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
-// const headers = {
-//   Authorization: `Bearer ${localStorage.getItem("token")}`,
-// };
+const headers = {
+  Authorization: `Bearer c26fc0f1-c207-4496-a4aa-1501b12f3e2e`,
+};
 
 export type Data = {
   id: string;
@@ -37,7 +37,7 @@ export const apiCoins = createApi({
         return {
           url: `/assets`,
           method: "GET",
-          //   headers,
+          headers,
         };
       },
       transformResponse: (response: Coins) => response.data,
@@ -47,7 +47,7 @@ export const apiCoins = createApi({
         return {
           url: `/assets/${id}`,
           method: "GET",
-          //   headers,
+          headers,
         };
       },
       transformResponse: (response: Coin) => response.data,

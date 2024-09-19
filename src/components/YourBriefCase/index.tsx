@@ -1,5 +1,6 @@
 import { JSX } from "react";
 import { useNavigate } from "react-router-dom";
+import { useAppSelector } from "../../hooks/hooks";
 
 export const YourBriefcase = (): JSX.Element => {
   const navigate = useNavigate();
