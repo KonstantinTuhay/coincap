@@ -1,6 +1,7 @@
-import { JSX } from "react";
+import { JSX, ChangeEvent } from "react";
 import { useNavigate } from "react-router-dom";
 import { useGetDetailsCoinQuery } from "../../redux/apiCoins";
+import { useAppSelector } from "../../hooks/hooks";
 
 export const NameCurrency = (): JSX.Element => {
   const navigate = useNavigate();
@@ -9,18 +10,47 @@ export const NameCurrency = (): JSX.Element => {
     navigate("/");
   };
 
-  const { data, error, isLoading } = useGetDetailsCoinQuery();
+  const currentId = useAppSelector((state) => state.getDetailsCoin);
+  console.log();
+
+  const { data, error, isLoading } = useGetDetailsCoinQuery(currentId);
+
+  if (isLoading) {
+    return <p>Loading...</p>;
+  }
+
+  if (error) {
+    if ("status" in error) {
+      const errMsg =
+        "error" in error ? error.error : JSON.stringify(error.data);
+
+      return (
+        <div>
+          <div>An error has occurred:</div>
+          <div>{errMsg}</div>
+        </div>
+      );
+    }
+    return <div>Error: {error.message}</div>;
+  }
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    console.log(e?.target.value);
+  };
 
   return (
     <div>
-      <p>SymbolCurrency (BTC)</p>
-      <p>name(Bitcoin) / USD</p>
+      <p>{data?.symbol} </p>
+      <p>{data?.name} / USD</p>
       <div>
         <p>График ----------------------------------</p>
       </div>
       <div>
         <p>Введите количество</p>
-        <input placeholder="Введите количество" />
+        <input
+          placeholder="Введите количество"
+          onChange={(e) => handleChange(e)}
+        />
         <button>Купить</button>
       </div>
       <table>

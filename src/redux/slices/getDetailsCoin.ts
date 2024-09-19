@@ -5,7 +5,7 @@ type InitialState = string;
 const initialState: InitialState = "";
 
 const getDetailsCoin = createSlice({
-  name: "threepopularcoins",
+  name: "getDetailsCoin",
   initialState,
   reducers: {
     getCoin: (state, action: PayloadAction<string>) => {

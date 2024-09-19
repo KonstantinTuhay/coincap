@@ -24,6 +24,11 @@ export type Coins = {
   timestamp?: number;
 };
 
+export type Coin = {
+  data: Data;
+  timestamp?: number;
+};
+
 export const apiCoins = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: "https://api.coincap.io/v2" }),
   endpoints: (builder) => ({
@@ -37,7 +42,7 @@ export const apiCoins = createApi({
       },
       transformResponse: (response: Coins) => response.data,
     }),
-    getDetailsCoin: builder.query<Data[], void>({
+    getDetailsCoin: builder.query<Data, void>({
       query: (id) => {
         return {
           url: `/assets/${id}`,
@@ -45,7 +50,7 @@ export const apiCoins = createApi({
           //   headers,
         };
       },
-      transformResponse: (response: Coins) => response.data,
+      transformResponse: (response: Coin) => response.data,
     }),
   }),
 });
