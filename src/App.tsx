@@ -3,6 +3,7 @@ import { MainPage } from "./pages/MainPage";
 import { Header } from "./components/Header/Header";
 import { CoinInformation } from "./pages/CoinInformation";
 import { YourBriefcase } from "./components/YourBriefCase";
+import { AddCoin } from "./components/AddCoin";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
           <Route path="/" element={<MainPage />} />
           <Route path="coininformation" element={<CoinInformation />} />
           <Route path="yourbriefcase" element={<YourBriefcase />} />
+          <Route path="addcoin" element={<AddCoin />} />
         </Route>
       </Routes>
     </>
