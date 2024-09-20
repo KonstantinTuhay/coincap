@@ -44,7 +44,7 @@ export const CoinData = ({ coin }: Coin): JSX.Element => {
         <td>{symbol}</td>
         <td>{name}</td>
         <td>{vwap24Hr} $</td>
-        <td>{changePercent24Hr} $</td>
+        <td>{changePercent24Hr} %</td>
         <td>{marketCapUsd} млрд $</td>
         <td>{priceUsd} $</td>
       </tr>

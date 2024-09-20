@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useGetDetailsCoinQuery } from "../../redux/apiCoins";
 import { useAppSelector } from "../../hooks/hooks";
 import { AmountForm } from "../AmountForm";
+import { changePrice } from "../../helpers/changePrice";
 
 export const NameCurrency = (): JSX.Element => {
   const navigate = useNavigate();
@@ -14,6 +15,7 @@ export const NameCurrency = (): JSX.Element => {
   const currentId = useAppSelector((state) => state.getDetailsCoin);
 
   const { data, error, isLoading } = useGetDetailsCoinQuery(currentId);
+  const newData = changePrice(data);
 
   if (isLoading) {
     return <p>Loading...</p>;
@@ -36,8 +38,8 @@ export const NameCurrency = (): JSX.Element => {
 
   return (
     <div>
-      <p>{data?.symbol} </p>
-      <p>{data?.name} / USD</p>
+      <p>{newData?.symbol} </p>
+      <p>{newData?.name} / USD</p>
       <div>
         <p>График ----------------------------------</p>
       </div>
@@ -53,28 +55,34 @@ export const NameCurrency = (): JSX.Element => {
         </thead>
         <tbody>
           <tr>
+            <td>Цена</td>
+            <td>{newData.priceUsd} $</td>
+          </tr>
+          <tr>
             <td>Доступное предложение для торговли</td>
-            <td>19.3 млн</td>
+            <td>{newData.supply} млн. $</td>
           </tr>
           <tr>
             <td>Общее количество выпущенных активов</td>
-            <td>19.3 млн</td>
+            <td>{newData.maxSupply} млн. $</td>
           </tr>
           <tr>
             <td>Объем торгов за последние 24 часа</td>
-            <td>19.3 млн</td>
+            <td>{newData.volumeUsd24Hr} млрд. $</td>
           </tr>
           <tr>
             <td>Средняя цена по объёму за последние 24 часа</td>
-            <td>19.3 млн</td>
+            <td>{newData.vwap24Hr} $</td>
           </tr>
           <tr>
             <td>Процентное изменения цены за последние 24 часа</td>
-            <td>19.3 млн</td>
+            <td>{newData.changePercent24Hr} %</td>
           </tr>
           <tr>
             <td>Сайт</td>
-            <td>19.3 млн</td>
+            <td>
+              <a href={newData.explorer}>{newData.explorer}</a>
+            </td>
           </tr>
         </tbody>
       </table>
