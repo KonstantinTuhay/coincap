@@ -41,7 +41,11 @@ export const AmountForm = (): JSX.Element => {
   }
 
   const setQuantity = () => {
-    const newObj = { ...newData, quantity: currentQuantity };
+    const newObj = {
+      ...newData,
+      quantity: currentQuantity,
+      coinId: crypto.randomUUID(),
+    };
     dispatch(getYourCoin(newObj));
     navigate("/");
   };

@@ -25,7 +25,9 @@ export const SwitchCoins = ({ newData }: Coins): JSX.Element => {
         </thead>
         <tbody>
           {currentItems?.length ? (
-            currentItems.map((coin) => <CoinData key={coin.id} coin={coin} />)
+            currentItems.map((coin) => (
+              <CoinData key={crypto.randomUUID()} coin={coin} />
+            ))
           ) : (
             <h2>No coins</h2>
           )}
