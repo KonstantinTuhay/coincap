@@ -3,6 +3,7 @@ import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
 import { getQuantity } from "../../redux/slices/getQuantityCoins";
 import { getYourCoin } from "../../redux/slices/listMyCoins";
 import { useGetDetailsCoinQuery } from "../../redux/apiCoins";
+import { changePrice } from "../../helpers/changePrice";
 
 export const AmountForm = (): JSX.Element => {
   const dispatch = useAppDispatch();
@@ -14,6 +15,9 @@ export const AmountForm = (): JSX.Element => {
   };
 
   const { data, error, isLoading } = useGetDetailsCoinQuery(currentId);
+  console.log(Array.isArray(data));
+  console.log(data);
+  const newData = changePrice(data);
 
   if (isLoading) {
     return <p>Loading...</p>;
@@ -35,7 +39,7 @@ export const AmountForm = (): JSX.Element => {
   }
 
   const setQuantity = () => {
-    const newObj = { ...data, quantity: currentQuantity };
+    const newObj = { ...newData, quantity: currentQuantity };
     dispatch(getYourCoin(newObj));
   };
 

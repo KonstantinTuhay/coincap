@@ -8,6 +8,7 @@ import { changePrice } from "../../helpers/changePrice";
 export const MainPage = (): JSX.Element => {
   const { data, error, isLoading } = useGetCoinsQuery();
   const newData = changePrice(data);
+  console.log(newData);
 
   const dispatch = useAppDispatch();
 
