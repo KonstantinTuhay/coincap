@@ -4,11 +4,10 @@ import { useAppSelector } from "../../hooks/hooks";
 
 export const Briefcase = (): JSX.Element => {
   const getTotal = useAppSelector((state) => state.listMyCoins);
-  const amounts = getTotal.reduce(
-    (accum, item) => (accum += +item.priceUsd),
-    0
-  );
-  console.log(amounts);
+  console.log(getTotal);
+  const amounts = getTotal
+    .reduce((accum, item) => accum + +item.priceUsd * +item.quantity, 0)
+    .toFixed(2);
 
   const navigate = useNavigate();
 

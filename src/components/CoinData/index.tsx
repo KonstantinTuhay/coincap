@@ -31,10 +31,10 @@ export const CoinData = ({ coin }: Coin): JSX.Element => {
     // supply,
     // maxSupply,
     marketCapUsd,
-    volumeUsd24Hr,
+    // volumeUsd24Hr,
     priceUsd,
     changePercent24Hr,
-    // vwap24Hr,
+    vwap24Hr,
     // explorer,
   } = coin;
   return (
@@ -43,10 +43,10 @@ export const CoinData = ({ coin }: Coin): JSX.Element => {
         <td>{rank}</td>
         <td>{symbol}</td>
         <td>{name}</td>
-        <td>{volumeUsd24Hr}</td>
-        <td>{changePercent24Hr}</td>
-        <td>{marketCapUsd}</td>
-        <td>{priceUsd}</td>
+        <td>{vwap24Hr} $</td>
+        <td>{changePercent24Hr} %</td>
+        <td>{marketCapUsd} млрд $</td>
+        <td>{priceUsd} $</td>
       </tr>
       <td onClick={() => addCoin(id)}>+</td>
     </>

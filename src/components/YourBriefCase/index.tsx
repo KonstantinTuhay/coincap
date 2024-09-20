@@ -5,6 +5,11 @@ import { YourListCoins } from "../YourListCoins";
 
 export const YourBriefcase = (): JSX.Element => {
   const getYourCoins = useAppSelector((state) => state.listMyCoins);
+  const getTotal = useAppSelector((state) => state.listMyCoins);
+  console.log(getTotal);
+  const amounts = getTotal
+    .reduce((accum, item) => accum + +item.priceUsd * +item.quantity, 0)
+    .toFixed(2);
 
   const navigate = useNavigate();
 
@@ -38,7 +43,7 @@ export const YourBriefcase = (): JSX.Element => {
         </tbody>
       </table>
 
-      <p>Total: number $</p>
+      <p>Total: {amounts} $</p>
     </div>
   );
 };

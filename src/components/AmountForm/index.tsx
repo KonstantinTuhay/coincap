@@ -3,8 +3,11 @@ import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
 import { getQuantity } from "../../redux/slices/getQuantityCoins";
 import { getYourCoin } from "../../redux/slices/listMyCoins";
 import { useGetDetailsCoinQuery } from "../../redux/apiCoins";
+import { changePrice } from "../../helpers/changePrice";
+import { useNavigate } from "react-router-dom";
 
 export const AmountForm = (): JSX.Element => {
+  const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const currentQuantity = useAppSelector((state) => state.getQuantityCoins);
   const currentId = useAppSelector((state) => state.getDetailsCoin);
@@ -14,6 +17,9 @@ export const AmountForm = (): JSX.Element => {
   };
 
   const { data, error, isLoading } = useGetDetailsCoinQuery(currentId);
+  console.log(Array.isArray(data));
+  console.log(data);
+  const newData = changePrice(data);
 
   if (isLoading) {
     return <p>Loading...</p>;
@@ -35,8 +41,9 @@ export const AmountForm = (): JSX.Element => {
   }
 
   const setQuantity = () => {
-    const newObj = { ...data, quantity: currentQuantity };
+    const newObj = { ...newData, quantity: currentQuantity };
     dispatch(getYourCoin(newObj));
+    navigate("/");
   };
 
   return (
