@@ -6,7 +6,7 @@ export const YourListCoins = ({ yourCoin }): JSX.Element => {
   console.log(yourCoin);
 
   const {
-    id,
+    // id,
     // rank,
     // symbol,
     name,
@@ -19,12 +19,13 @@ export const YourListCoins = ({ yourCoin }): JSX.Element => {
     // vwap24Hr,
     // explorer,
     quantity,
+    coinId,
   } = yourCoin;
 
   const dispatch = useAppDispatch();
 
-  const handleSell = (id: string) => {
-    dispatch(sellCoin(id));
+  const handleSell = (coinId: string) => {
+    dispatch(sellCoin(coinId));
   };
 
   return (
@@ -34,7 +35,7 @@ export const YourListCoins = ({ yourCoin }): JSX.Element => {
         <td>{priceUsd}</td>
         <td>{quantity}</td>
         <td>{priceUsd}</td>
-        <button onClick={() => handleSell(id)}>sell</button>
+        <button onClick={() => handleSell(coinId)}>sell</button>
       </tr>
     </div>
   );

@@ -14,6 +14,7 @@ export type InitialState = {
   vwap24Hr: string;
   explorer: string;
   quantity: string;
+  coinId: string;
 };
 
 const initialState: InitialState[] = [];
@@ -26,7 +27,7 @@ const listMyCoins = createSlice({
       state.push(action.payload);
     },
     sellCoin: (state, action: PayloadAction<string>) => {
-      return state.filter((userCoins) => userCoins.id !== action.payload);
+      return state.filter((userCoins) => userCoins.coinId !== action.payload);
     },
   },
 });
