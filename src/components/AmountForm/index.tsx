@@ -5,6 +5,7 @@ import { getYourCoin } from "../../redux/slices/listMyCoins";
 import { useGetDetailsCoinQuery } from "../../redux/apiCoins";
 import { changePrice } from "../../helpers/changePrice";
 import { useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form";
 
 export const AmountForm = (): JSX.Element => {
   const navigate = useNavigate();
@@ -50,15 +51,51 @@ export const AmountForm = (): JSX.Element => {
     navigate("/");
   };
 
+  const {
+    register,
+    handleSubmit,
+    // watch,
+    formState: { errors },
+  } = useForm();
+
+  const onSubmit = (data) => {
+    console.log(data);
+
+    // dispatch(getQuantity(data.test));
+
+    const newObj = {
+      ...newData,
+      quantity: data.test,
+      coinId: crypto.randomUUID(),
+    };
+    dispatch(getYourCoin(newObj));
+    navigate("/");
+  };
+
   return (
-    <>
+    <form onSubmit={handleSubmit(onSubmit)}>
       <p>Enter quantity:</p>
+
+      {/* <input
+        placeholder="Введите количество"
+        onChange={(e) => handleChange(e)}
+      /> */}
 
       <input
         placeholder="Введите количество"
-        onChange={(e) => handleChange(e)}
+        type="text"
+        {...register("test", {
+          // onChange: (e) => handleChange(e),
+          pattern: /^\d+([.]?\d+)?$/,
+          // valueAsNumber: true,
+        })}
       />
-      <button onClick={() => setQuantity()}>Купить</button>
-    </>
+      {errors.test && <span>Введите целое или дробное число через точку</span>}
+
+      <input
+        type="submit"
+        //  onClick={() => setQuantity()}
+      />
+    </form>
   );
 };

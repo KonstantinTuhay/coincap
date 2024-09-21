@@ -35,7 +35,7 @@ export const YourBriefcase = (): JSX.Element => {
         <tbody>
           {getYourCoins?.length ? (
             getYourCoins.map((yourCoin) => (
-              <YourListCoins key={yourCoin.id} yourCoin={yourCoin} />
+              <YourListCoins key={crypto.randomUUID()} yourCoin={yourCoin} />
             ))
           ) : (
             <h2>You don't have coins</h2>
