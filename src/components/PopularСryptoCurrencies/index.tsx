@@ -14,7 +14,7 @@ export const PopularСryptoCurrencies = (): JSX.Element => {
     >
       <p>Popular cryptocurrencies:</p>
       {popularCoins.map((popularCoin) => (
-        <PopularCoin popularCoin={popularCoin} />
+        <PopularCoin key={crypto.randomUUID()} popularCoin={popularCoin} />
       ))}
     </div>
   );
