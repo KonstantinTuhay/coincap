@@ -23,7 +23,7 @@ const listMyCoins = createSlice({
   name: "listMyCoins",
   initialState,
   reducers: {
-    getYourCoin: (state, action: PayloadAction<InitialState[]>) => {
+    getYourCoin: (state, action: PayloadAction<InitialState>) => {
       state.push(action.payload);
     },
     sellCoin: (state, action: PayloadAction<string>) => {
