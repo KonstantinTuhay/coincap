@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 const headers = {
-  Authorization: `Bearer c26fc0f1-c207-4496-a4aa-1501b12f3e2e`,
+  Authorization: `Bearer ${import.meta.env.VITE_KEY}`,
 };
 
 export type Data = {
@@ -30,7 +30,7 @@ export type Coin = {
 };
 
 export const apiCoins = createApi({
-  baseQuery: fetchBaseQuery({ baseUrl: "https://api.coincap.io/v2" }),
+  baseQuery: fetchBaseQuery({ baseUrl: `${import.meta.env.VITE_URL}` }),
   endpoints: (builder) => ({
     getCoins: builder.query<Data[], void>({
       query: () => {
