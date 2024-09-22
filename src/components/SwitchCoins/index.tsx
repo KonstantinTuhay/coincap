@@ -2,11 +2,12 @@ import { JSX, useState } from "react";
 // import { Coins } from "../../redux/apiCoins";
 import { HeadTable } from "../HeadTable";
 // import { Data } from "../CoinData";
-import { NewData } from "../../pages/MainPage";
+// import { NewData } from "../../pages/MainPage";
+import { Data } from "../../redux/apiCoins";
 import { CoinData } from "../CoinData";
 
 type DataSwitch = {
-  newData: NewData[];
+  newData: Data[];
 };
 
 export const SwitchCoins = ({ newData }: DataSwitch): JSX.Element => {
