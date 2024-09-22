@@ -3,7 +3,7 @@ import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
 // import { getQuantity } from "../../redux/slices/getQuantityCoins";
 import { getYourCoin } from "../../redux/slices/listMyCoins";
 import { useGetDetailsCoinQuery } from "../../redux/apiCoins";
-import { changePriceObject } from "../../helpers/changePriceObject";
+import { changePrice } from "../../helpers/changePrice";
 import { useNavigate } from "react-router-dom";
 import { useForm, SubmitHandler } from "react-hook-form";
 
@@ -24,7 +24,7 @@ export const AmountForm = (): JSX.Element => {
   const { data, error, isLoading } = useGetDetailsCoinQuery(currentId);
   console.log(Array.isArray(data));
   console.log(data);
-  const newData = changePriceObject(data);
+  const newData = changePrice(data);
 
   if (isLoading) {
     return <p>Loading...</p>;
