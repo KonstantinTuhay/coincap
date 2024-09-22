@@ -1,13 +1,13 @@
 import { JSX, useEffect } from "react";
 import { SwitchCoins } from "../../components/SwitchCoins";
-import { useGetCoinsQuery } from "../../redux/apiCoins";
 import { useAppDispatch } from "../../hooks/hooks";
 import { setPopularCoins } from "../../redux/slices/popularCoins";
-import { changePrice } from "../../helpers/changePrice";
+import { changePriceArray } from "../../helpers/changePriceArray";
+import { Data, useGetCoinsQuery } from "../../redux/apiCoins";
 
 export const MainPage = (): JSX.Element => {
   const { data, error, isLoading } = useGetCoinsQuery();
-  const newData = changePrice(data);
+  const newData: Data[] = changePriceArray(data || []);
   console.log(newData);
 
   const dispatch = useAppDispatch();

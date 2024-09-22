@@ -1,9 +1,9 @@
 import { JSX } from "react";
-import { useNavigate } from "react-router-dom";
-import { useGetDetailsCoinQuery } from "../../redux/apiCoins";
 import { useAppSelector } from "../../hooks/hooks";
 import { AmountForm } from "../AmountForm";
-import { changePrice } from "../../helpers/changePrice";
+import { changePriceObject } from "../../helpers/changePriceObject";
+import { Data, useGetDetailsCoinQuery } from "../../redux/apiCoins";
+import { useNavigate } from "react-router-dom";
 
 export const NameCurrency = (): JSX.Element => {
   const navigate = useNavigate();
@@ -15,7 +15,8 @@ export const NameCurrency = (): JSX.Element => {
   const currentId = useAppSelector((state) => state.getDetailsCoin);
 
   const { data, error, isLoading } = useGetDetailsCoinQuery(currentId);
-  const newData = changePrice(data);
+  const newData: Data = changePriceObject(data || {});
+  console.log(newData);
 
   if (isLoading) {
     return <p>Loading...</p>;

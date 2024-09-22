@@ -1,26 +1,15 @@
 import { JSX } from "react";
 import { useAppDispatch } from "../../hooks/hooks";
-import { sellCoin } from "../../redux/slices/listMyCoins";
+import { InitialState, sellCoin } from "../../redux/slices/listMyCoins";
 
-export const YourListCoins = ({ yourCoin }): JSX.Element => {
+type YourCoin = {
+  yourCoin: InitialState;
+};
+
+export const YourListCoins = ({ yourCoin }: YourCoin): JSX.Element => {
   console.log(yourCoin);
 
-  const {
-    // id,
-    // rank,
-    // symbol,
-    name,
-    // supply,
-    // maxSupply,
-    // marketCapUsd,
-    // volumeUsd24Hr,
-    priceUsd,
-    // changePercent24Hr,
-    // vwap24Hr,
-    // explorer,
-    quantity,
-    coinId,
-  } = yourCoin;
+  const { name, priceUsd, quantity, coinId } = yourCoin;
 
   const dispatch = useAppDispatch();
 
@@ -35,7 +24,7 @@ export const YourListCoins = ({ yourCoin }): JSX.Element => {
         <td>{priceUsd}</td>
         <td>{quantity}</td>
         <td>{priceUsd}</td>
-        <button onClick={() => handleSell(coinId)}>sell</button>
+        <button onClick={() => handleSell(coinId || "")}>sell</button>
       </tr>
     </div>
   );

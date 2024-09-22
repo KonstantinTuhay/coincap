@@ -1,8 +1,8 @@
 import { JSX } from "react";
 import { Data } from "../../redux/apiCoins";
-import { useNavigate } from "react-router-dom";
-import { useAppDispatch } from "../../hooks/hooks";
 import { getCoin } from "../../redux/slices/getDetailsCoin";
+import { useAppDispatch } from "../../hooks/hooks";
+import { useNavigate } from "react-router-dom";
 
 type Coin = {
   coin: Data;
@@ -28,18 +28,14 @@ export const CoinData = ({ coin }: Coin): JSX.Element => {
     rank,
     symbol,
     name,
-    // supply,
-    // maxSupply,
     marketCapUsd,
-    // volumeUsd24Hr,
     priceUsd,
     changePercent24Hr,
     vwap24Hr,
-    // explorer,
   } = coin;
   return (
     <>
-      <tr onClick={() => handleClick(id)}>
+      <tr onClick={() => handleClick(id || "")}>
         <td>{rank}</td>
         <td>{symbol}</td>
         <td>{name}</td>
@@ -48,7 +44,7 @@ export const CoinData = ({ coin }: Coin): JSX.Element => {
         <td>{marketCapUsd} млрд $</td>
         <td>{priceUsd} $</td>
       </tr>
-      <td onClick={() => addCoin(id)}>+</td>
+      <td onClick={() => addCoin(id || "")}>+</td>
     </>
   );
 };

@@ -21,29 +21,19 @@ const persistConfig = {
   storage,
 };
 
-const rootReducer = combineReducers(
-  {
-    listMyCoins: listMyCoins,
-    getQuantityCoins: getQuantityCoins,
-    getDetailsCoin: getDetailsCoin,
-    popularCoins: popularCoins,
-    [apiCoins.reducerPath]: apiCoins.reducer,
-  }
-  // middleware: (getDefaultMiddleware) =>
-  //   getDefaultMiddleware().concat(apiCoins.middleware),
-);
+const rootReducer = combineReducers({
+  listMyCoins: listMyCoins,
+  getQuantityCoins: getQuantityCoins,
+  getDetailsCoin: getDetailsCoin,
+  popularCoins: popularCoins,
+  [apiCoins.reducerPath]: apiCoins.reducer,
+});
 
 const persistorReducer = persistReducer(persistConfig, rootReducer);
 
 export const store = configureStore({
   reducer: persistorReducer,
-  // {
-  //   listMyCoins: listMyCoins,
-  //   getQuantityCoins: getQuantityCoins,
-  //   getDetailsCoin: getDetailsCoin,
-  //   popularCoins: popularCoins,
-  //   [apiCoins.reducerPath]: apiCoins.reducer,
-  // },
+
   middleware: (getDefaultMiddleware) => {
     return getDefaultMiddleware({
       serializableCheck: {
