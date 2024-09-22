@@ -39,7 +39,7 @@ export const CoinData = ({ coin }: Coin): JSX.Element => {
   } = coin;
   return (
     <>
-      <tr onClick={() => handleClick(id)}>
+      <tr onClick={() => handleClick(id || "")}>
         <td>{rank}</td>
         <td>{symbol}</td>
         <td>{name}</td>
@@ -48,7 +48,7 @@ export const CoinData = ({ coin }: Coin): JSX.Element => {
         <td>{marketCapUsd} млрд $</td>
         <td>{priceUsd} $</td>
       </tr>
-      <td onClick={() => addCoin(id)}>+</td>
+      <td onClick={() => addCoin(id || "")}>+</td>
     </>
   );
 };
