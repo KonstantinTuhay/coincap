@@ -40,7 +40,7 @@ export const YourListCoins = ({ yourCoin }: YourCoin): JSX.Element => {
         <td>{priceUsd}</td>
         <td>{quantity}</td>
         <td>{priceUsd}</td>
-        <button onClick={() => handleSell(coinId)}>sell</button>
+        <button onClick={() => handleSell(coinId || "")}>sell</button>
       </tr>
     </div>
   );

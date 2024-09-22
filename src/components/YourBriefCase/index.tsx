@@ -8,7 +8,7 @@ export const YourBriefcase = (): JSX.Element => {
   const getTotal = useAppSelector((state) => state.listMyCoins);
   console.log(getTotal);
   const amounts = getTotal
-    .reduce((accum, item) => accum + +item.priceUsd * +item.quantity, 0)
+    ?.reduce((accum, item) => accum + +item.priceUsd * +item.quantity, 0)
     .toFixed(2);
 
   const navigate = useNavigate();
