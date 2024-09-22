@@ -3,7 +3,7 @@ import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
 // import { getQuantity } from "../../redux/slices/getQuantityCoins";
 import { getYourCoin } from "../../redux/slices/listMyCoins";
 import { useGetDetailsCoinQuery } from "../../redux/apiCoins";
-import { changePrice } from "../../helpers/changePrice";
+import { changePriceObject } from "../../helpers/changePriceObject";
 import { useNavigate } from "react-router-dom";
 import { useForm, SubmitHandler } from "react-hook-form";
 
@@ -12,6 +12,13 @@ type Inputs = {
 };
 
 export const AmountForm = (): JSX.Element => {
+  const {
+    register,
+    handleSubmit,
+    // watch,
+    formState: { errors },
+  } = useForm<Inputs>();
+
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   // const currentQuantity = useAppSelector((state) => state.getQuantityCoins);
@@ -24,7 +31,7 @@ export const AmountForm = (): JSX.Element => {
   const { data, error, isLoading } = useGetDetailsCoinQuery(currentId);
   console.log(Array.isArray(data));
   console.log(data);
-  const newData = changePrice(data);
+  const newData = changePriceObject(data || {});
 
   if (isLoading) {
     return <p>Loading...</p>;
@@ -54,13 +61,6 @@ export const AmountForm = (): JSX.Element => {
   //   dispatch(getYourCoin(newObj));
   //   navigate("/");
   // };
-
-  const {
-    register,
-    handleSubmit,
-    // watch,
-    formState: { errors },
-  } = useForm<Inputs>();
 
   const onSubmit: SubmitHandler<Inputs> = (data) => {
     console.log(data);
