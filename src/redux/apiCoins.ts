@@ -21,7 +21,6 @@ export type Data = {
 
 export type Coins = {
   data: Data[];
-  // newData?: Data[];
   timestamp?: number;
 };
 

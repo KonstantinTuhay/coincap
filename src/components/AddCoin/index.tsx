@@ -1,8 +1,8 @@
 import { JSX } from "react";
+import { AmountForm } from "../AmountForm";
 import { useAppSelector } from "../../hooks/hooks";
 import { useGetDetailsCoinQuery } from "../../redux/apiCoins";
 import { useNavigate } from "react-router-dom";
-import { AmountForm } from "../AmountForm";
 
 export const AddCoin = (): JSX.Element => {
   const currentId = useAppSelector((state) => state.getDetailsCoin);

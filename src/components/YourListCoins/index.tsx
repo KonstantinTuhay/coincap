@@ -1,7 +1,6 @@
 import { JSX } from "react";
 import { useAppDispatch } from "../../hooks/hooks";
-import { sellCoin } from "../../redux/slices/listMyCoins";
-import { InitialState } from "../../redux/slices/listMyCoins";
+import { InitialState, sellCoin } from "../../redux/slices/listMyCoins";
 
 type YourCoin = {
   yourCoin: InitialState;
@@ -10,22 +9,7 @@ type YourCoin = {
 export const YourListCoins = ({ yourCoin }: YourCoin): JSX.Element => {
   console.log(yourCoin);
 
-  const {
-    // id,
-    // rank,
-    // symbol,
-    name,
-    // supply,
-    // maxSupply,
-    // marketCapUsd,
-    // volumeUsd24Hr,
-    priceUsd,
-    // changePercent24Hr,
-    // vwap24Hr,
-    // explorer,
-    quantity,
-    coinId,
-  } = yourCoin;
+  const { name, priceUsd, quantity, coinId } = yourCoin;
 
   const dispatch = useAppDispatch();
 

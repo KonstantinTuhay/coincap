@@ -1,25 +1,9 @@
 import { JSX, useEffect } from "react";
 import { SwitchCoins } from "../../components/SwitchCoins";
-import { useGetCoinsQuery } from "../../redux/apiCoins";
 import { useAppDispatch } from "../../hooks/hooks";
 import { setPopularCoins } from "../../redux/slices/popularCoins";
 import { changePriceArray } from "../../helpers/changePriceArray";
-import { Data } from "../../redux/apiCoins";
-
-// export type NewData = {
-//   id: string;
-//   rank: string;
-//   symbol: string;
-//   name: string;
-//   supply: string;
-//   maxSupply: string;
-//   marketCapUsd: string;
-//   volumeUsd24Hr: string;
-//   priceUsd: string;
-//   changePercent24Hr: string;
-//   vwap24Hr: string;
-//   explorer: string;
-// };
+import { Data, useGetCoinsQuery } from "../../redux/apiCoins";
 
 export const MainPage = (): JSX.Element => {
   const { data, error, isLoading } = useGetCoinsQuery();

@@ -1,6 +1,4 @@
-// import { NewData } from "../pages/MainPage";
 import { Data } from "../redux/apiCoins";
-// type Data = NewData[] | NewData;
 
 export const changePriceArray = (data: Data[]) => {
   console.log(data);

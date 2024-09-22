@@ -1,6 +1,6 @@
 import { JSX } from "react";
-import { useNavigate } from "react-router-dom";
 import { useAppSelector } from "../../hooks/hooks";
+import { useNavigate } from "react-router-dom";
 
 export const Briefcase = (): JSX.Element => {
   const getTotal = useAppSelector((state) => state.listMyCoins);

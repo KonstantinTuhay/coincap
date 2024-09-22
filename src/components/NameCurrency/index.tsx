@@ -1,11 +1,9 @@
 import { JSX } from "react";
-import { useNavigate } from "react-router-dom";
-import { useGetDetailsCoinQuery } from "../../redux/apiCoins";
 import { useAppSelector } from "../../hooks/hooks";
 import { AmountForm } from "../AmountForm";
 import { changePriceObject } from "../../helpers/changePriceObject";
-// import { NewData } from "../../pages/MainPage";
-import { Data } from "../../redux/apiCoins";
+import { Data, useGetDetailsCoinQuery } from "../../redux/apiCoins";
+import { useNavigate } from "react-router-dom";
 
 export const NameCurrency = (): JSX.Element => {
   const navigate = useNavigate();
