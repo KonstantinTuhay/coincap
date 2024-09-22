@@ -2,7 +2,7 @@
 import { Data } from "../redux/apiCoins";
 // type Data = NewData[] | NewData;
 
-export const changePrice = (data: Data) => {
+export const changePriceObject = (data: Data) => {
   console.log(data);
 
   const a = {
