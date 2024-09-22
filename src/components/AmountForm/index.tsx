@@ -22,8 +22,6 @@ export const AmountForm = (): JSX.Element => {
   const currentId = useAppSelector((state) => state.getDetailsCoin);
 
   const { data, error, isLoading } = useGetDetailsCoinQuery(currentId);
-  console.log(Array.isArray(data));
-  console.log(data);
   const newData = changePriceObject(data || {});
 
   if (isLoading) {
@@ -46,8 +44,6 @@ export const AmountForm = (): JSX.Element => {
   }
 
   const onSubmit: SubmitHandler<Inputs> = (data) => {
-    console.log(data);
-
     const newObj = {
       ...newData,
       quantity: data.test,

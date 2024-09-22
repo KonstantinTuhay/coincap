@@ -7,8 +7,6 @@ type YourCoin = {
 };
 
 export const YourListCoins = ({ yourCoin }: YourCoin): JSX.Element => {
-  console.log(yourCoin);
-
   const { name, priceUsd, quantity, coinId } = yourCoin;
 
   const dispatch = useAppDispatch();

@@ -6,7 +6,6 @@ import { useNavigate } from "react-router-dom";
 export const YourBriefcase = (): JSX.Element => {
   const getYourCoins = useAppSelector((state) => state.listMyCoins);
   const getTotal = useAppSelector((state) => state.listMyCoins);
-  console.log(getTotal);
   const amounts = getTotal
     ?.reduce((accum, item) => accum + +item.priceUsd * +item.quantity, 0)
     .toFixed(2);

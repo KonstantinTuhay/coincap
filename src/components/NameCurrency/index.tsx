@@ -16,7 +16,6 @@ export const NameCurrency = (): JSX.Element => {
 
   const { data, error, isLoading } = useGetDetailsCoinQuery(currentId);
   const newData: Data = changePriceObject(data || {});
-  console.log(newData);
 
   if (isLoading) {
     return <p>Loading...</p>;

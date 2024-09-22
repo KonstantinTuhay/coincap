@@ -8,7 +8,6 @@ import { Data, useGetCoinsQuery } from "../../redux/apiCoins";
 export const MainPage = (): JSX.Element => {
   const { data, error, isLoading } = useGetCoinsQuery();
   const newData: Data[] = changePriceArray(data || []);
-  console.log(newData);
 
   const dispatch = useAppDispatch();
 

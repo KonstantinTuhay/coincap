@@ -1,8 +1,6 @@
 import { Data } from "../redux/apiCoins";
 
 export const changePriceObject = (data: Data) => {
-  console.log(data);
-
   const a = {
     ...data,
     vwap24Hr: `${Number(data.vwap24Hr).toFixed(2)}`,
