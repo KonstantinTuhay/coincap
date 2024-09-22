@@ -1,26 +1,30 @@
-import { JSX, ChangeEvent } from "react";
+import { JSX } from "react";
 import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
-import { getQuantity } from "../../redux/slices/getQuantityCoins";
+// import { getQuantity } from "../../redux/slices/getQuantityCoins";
 import { getYourCoin } from "../../redux/slices/listMyCoins";
 import { useGetDetailsCoinQuery } from "../../redux/apiCoins";
-import { changePrice } from "../../helpers/changePrice";
+import { changePriceObject } from "../../helpers/changePriceObject";
 import { useNavigate } from "react-router-dom";
-import { useForm } from "react-hook-form";
+import { useForm, SubmitHandler } from "react-hook-form";
+
+type Inputs = {
+  test: number;
+};
 
 export const AmountForm = (): JSX.Element => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
-  const currentQuantity = useAppSelector((state) => state.getQuantityCoins);
+  // const currentQuantity = useAppSelector((state) => state.getQuantityCoins);
   const currentId = useAppSelector((state) => state.getDetailsCoin);
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    dispatch(getQuantity(e?.target.value));
-  };
+  // const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+  //   dispatch(getQuantity(e?.target.value));
+  // };
 
   const { data, error, isLoading } = useGetDetailsCoinQuery(currentId);
   console.log(Array.isArray(data));
   console.log(data);
-  const newData = changePrice(data);
+  const newData = changePriceObject(data);
 
   if (isLoading) {
     return <p>Loading...</p>;
@@ -41,24 +45,24 @@ export const AmountForm = (): JSX.Element => {
     return <div>Error: {error.message}</div>;
   }
 
-  const setQuantity = () => {
-    const newObj = {
-      ...newData,
-      quantity: currentQuantity,
-      coinId: crypto.randomUUID(),
-    };
-    dispatch(getYourCoin(newObj));
-    navigate("/");
-  };
+  // const setQuantity = () => {
+  //   const newObj = {
+  //     ...newData,
+  //     quantity: currentQuantity,
+  //     coinId: crypto.randomUUID(),
+  //   };
+  //   dispatch(getYourCoin(newObj));
+  //   navigate("/");
+  // };
 
   const {
     register,
     handleSubmit,
     // watch,
     formState: { errors },
-  } = useForm();
+  } = useForm<Inputs>();
 
-  const onSubmit = (data) => {
+  const onSubmit: SubmitHandler<Inputs> = (data) => {
     console.log(data);
 
     // dispatch(getQuantity(data.test));
