@@ -1,8 +1,6 @@
 import { Data } from "../redux/apiCoins";
 
 export const changePriceArray = (data: Data[]) => {
-  console.log(data);
-
   const a = data?.map((item) => {
     return {
       ...item,
