@@ -17,7 +17,7 @@ export const SwitchCoins = ({ newData }: DataSwitch): JSX.Element => {
   const endIndex = startIndex + itemsPerPage;
   const currentItems = newData?.slice(startIndex, endIndex);
 
-  const totalPages = Math.ceil(newData?.length || 0 / itemsPerPage);
+  const totalPages = Math.ceil(newData?.length / itemsPerPage);
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);

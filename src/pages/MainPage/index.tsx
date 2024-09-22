@@ -4,26 +4,26 @@ import { useGetCoinsQuery } from "../../redux/apiCoins";
 import { useAppDispatch } from "../../hooks/hooks";
 import { setPopularCoins } from "../../redux/slices/popularCoins";
 import { changePrice } from "../../helpers/changePrice";
-// import { Data } from "../../redux/apiCoins";
+import { Data } from "../../redux/apiCoins";
 
-export type NewData = {
-  id: string;
-  rank: string;
-  symbol: string;
-  name: string;
-  supply: string;
-  maxSupply: string;
-  marketCapUsd: string;
-  volumeUsd24Hr: string;
-  priceUsd: string;
-  changePercent24Hr: string;
-  vwap24Hr: string;
-  explorer: string;
-};
+// export type NewData = {
+//   id: string;
+//   rank: string;
+//   symbol: string;
+//   name: string;
+//   supply: string;
+//   maxSupply: string;
+//   marketCapUsd: string;
+//   volumeUsd24Hr: string;
+//   priceUsd: string;
+//   changePercent24Hr: string;
+//   vwap24Hr: string;
+//   explorer: string;
+// };
 
 export const MainPage = (): JSX.Element => {
   const { data, error, isLoading } = useGetCoinsQuery();
-  const newData: NewData[] = changePrice(data);
+  const newData: Data[] = changePrice(data || []);
   console.log(newData);
 
   const dispatch = useAppDispatch();

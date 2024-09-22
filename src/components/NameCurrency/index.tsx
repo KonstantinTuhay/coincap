@@ -4,6 +4,7 @@ import { useGetDetailsCoinQuery } from "../../redux/apiCoins";
 import { useAppSelector } from "../../hooks/hooks";
 import { AmountForm } from "../AmountForm";
 import { changePrice } from "../../helpers/changePrice";
+// import { NewData } from "../../pages/MainPage";
 
 export const NameCurrency = (): JSX.Element => {
   const navigate = useNavigate();
@@ -16,6 +17,7 @@ export const NameCurrency = (): JSX.Element => {
 
   const { data, error, isLoading } = useGetDetailsCoinQuery(currentId);
   const newData = changePrice(data);
+  console.log(newData);
 
   if (isLoading) {
     return <p>Loading...</p>;
