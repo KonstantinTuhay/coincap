@@ -1,17 +1,23 @@
 import { JSX, useState } from "react";
-import { Coins } from "../../redux/apiCoins";
+// import { Coins } from "../../redux/apiCoins";
 import { HeadTable } from "../HeadTable";
+// import { Data } from "../CoinData";
+import { NewData } from "../../pages/MainPage";
 import { CoinData } from "../CoinData";
 
-export const SwitchCoins = ({ newData }: Coins): JSX.Element => {
+type DataSwitch = {
+  newData: NewData[];
+};
+
+export const SwitchCoins = ({ newData }: DataSwitch): JSX.Element => {
   const itemsPerPage = 10;
   const [currentPage, setCurrentPage] = useState(1);
 
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
-  const currentItems = newData.slice(startIndex, endIndex);
+  const currentItems = newData?.slice(startIndex, endIndex);
 
-  const totalPages = Math.ceil(newData.length / itemsPerPage);
+  const totalPages = Math.ceil(newData?.length || 0 / itemsPerPage);
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
