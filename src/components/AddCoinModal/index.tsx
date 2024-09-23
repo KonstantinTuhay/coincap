@@ -2,7 +2,6 @@ import { JSX } from "react";
 import { AmountForm } from "../AmountForm";
 import { useAppSelector } from "../../hooks/hooks";
 import { useGetDetailsCoinQuery } from "../../redux/apiCoins";
-// import { useNavigate } from "react-router-dom";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
@@ -25,8 +24,6 @@ const closeButtonStyled = {
 
 export const AddCoinModal = ({ open, setOpen }): JSX.Element => {
   const currentId = useAppSelector((state) => state.getDetailsCoin);
-
-  // const navigate = useNavigate();
 
   const clickBack = () => {
     setOpen(false);

@@ -5,9 +5,8 @@ import { getYourCoin } from "../../redux/slices/listMyCoins";
 import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
 import { useNavigate } from "react-router-dom";
 import { useForm, SubmitHandler } from "react-hook-form";
-import { Button, FormControl, Input, Typography } from "@mui/material";
+import { Button, Typography } from "@mui/material";
 import TextField from "@mui/material/TextField";
-// import { Form } from "react-router-dom";
 
 type Inputs = {
   test: number;
@@ -20,7 +19,6 @@ export const AmountForm = ({ setOpen }): JSX.Element => {
     formState: { errors },
   } = useForm<Inputs>();
 
-  const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const currentId = useAppSelector((state) => state.getDetailsCoin);
 
