@@ -3,10 +3,10 @@ import { changePriceObject } from "../../helpers/changePriceObject";
 import { useGetDetailsCoinQuery } from "../../redux/apiCoins";
 import { getYourCoin } from "../../redux/slices/listMyCoins";
 import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
-import { useNavigate } from "react-router-dom";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { Button, Typography } from "@mui/material";
 import TextField from "@mui/material/TextField";
+import Alert from "@mui/material/Alert";
 
 type Inputs = {
   test: number;
@@ -71,11 +71,9 @@ export const AmountForm = ({ setOpen }): JSX.Element => {
         }}
         type="text"
         {...register("test", {
-          pattern: /^\d+([.]?\d+)?$/,
+          pattern: /^\d+([.]?\d+)0?$/,
         })}
       />
-
-      {errors.test && <span>Введите целое или дробное число через точку</span>}
 
       <Button
         sx={{
@@ -90,6 +88,12 @@ export const AmountForm = ({ setOpen }): JSX.Element => {
       >
         BUY
       </Button>
+
+      {errors.test && (
+        <Alert variant="outlined" severity="warning">
+          Введите целое или дробное число через точку
+        </Alert>
+      )}
     </form>
   );
 };
