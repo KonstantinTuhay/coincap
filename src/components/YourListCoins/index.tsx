@@ -1,9 +1,16 @@
 import { JSX } from "react";
 import { useAppDispatch } from "../../hooks/hooks";
 import { InitialState, sellCoin } from "../../redux/slices/listMyCoins";
+import TableRow from "@mui/material/TableRow";
+import TableCell from "@mui/material/TableCell";
+import Button from "@mui/material/Button";
 
 type YourCoin = {
   yourCoin: InitialState;
+};
+
+const buttonSell = {
+  backgroundColor: "#ff0000b0",
 };
 
 export const YourListCoins = ({ yourCoin }: YourCoin): JSX.Element => {
@@ -16,14 +23,22 @@ export const YourListCoins = ({ yourCoin }: YourCoin): JSX.Element => {
   };
 
   return (
-    <div>
-      <tr>
-        <td>{name}</td>
-        <td>{priceUsd}</td>
-        <td>{quantity}</td>
-        <td>{priceUsd}</td>
-        <button onClick={() => handleSell(coinId || "")}>sell</button>
-      </tr>
-    </div>
+    <>
+      <TableRow>
+        <TableCell>{name}</TableCell>
+        <TableCell>{priceUsd}</TableCell>
+        <TableCell>{quantity}</TableCell>
+        <TableCell>{priceUsd}</TableCell>
+        <TableCell>
+          <Button
+            onClick={() => handleSell(coinId || "")}
+            variant="contained"
+            sx={buttonSell}
+          >
+            SELL
+          </Button>
+        </TableCell>
+      </TableRow>
+    </>
   );
 };
