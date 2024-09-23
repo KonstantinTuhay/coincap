@@ -37,7 +37,7 @@ export const MainPage = (): JSX.Element => {
 
   return (
     <>
-      <Container maxWidth="md">
+      <Container maxWidth="lg">
         <SwitchCoins newData={newData || []} />
       </Container>
     </>

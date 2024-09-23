@@ -3,6 +3,9 @@ import { Data } from "../../redux/apiCoins";
 import { getCoin } from "../../redux/slices/getDetailsCoin";
 import { useAppDispatch } from "../../hooks/hooks";
 import { useNavigate } from "react-router-dom";
+import TableRow from "@mui/material/TableRow";
+import TableCell from "@mui/material/TableCell";
+import Button from "@mui/material/Button";
 
 type Coin = {
   coin: Data;
@@ -35,16 +38,28 @@ export const CoinData = ({ coin }: Coin): JSX.Element => {
   } = coin;
   return (
     <>
-      <tr onClick={() => handleClick(id || "")}>
-        <td>{rank}</td>
-        <td>{symbol}</td>
-        <td>{name}</td>
-        <td>{vwap24Hr} $</td>
-        <td>{changePercent24Hr} %</td>
-        <td>{marketCapUsd} млрд $</td>
-        <td>{priceUsd} $</td>
-      </tr>
-      <td onClick={() => addCoin(id || "")}>+</td>
+      <TableRow>
+        <TableCell onClick={() => handleClick(id || "")}>{rank}</TableCell>
+        <TableCell onClick={() => handleClick(id || "")}>{symbol}</TableCell>
+        <TableCell onClick={() => handleClick(id || "")}>{name}</TableCell>
+        <TableCell onClick={() => handleClick(id || "")}>
+          {vwap24Hr} $
+        </TableCell>
+        <TableCell onClick={() => handleClick(id || "")}>
+          {changePercent24Hr} %
+        </TableCell>
+        <TableCell onClick={() => handleClick(id || "")}>
+          {marketCapUsd} млрд $
+        </TableCell>
+        <TableCell onClick={() => handleClick(id || "")}>
+          {priceUsd} $
+        </TableCell>
+        <TableCell onClick={() => addCoin(id || "")}>
+          <Button variant="contained" sx={{ backgroundColor: "green" }}>
+            BUY
+          </Button>
+        </TableCell>
+      </TableRow>
     </>
   );
 };

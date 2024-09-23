@@ -2,6 +2,11 @@ import { JSX, useState } from "react";
 import { HeadTable } from "../HeadTable";
 import { CoinData } from "../CoinData";
 import { Data } from "../../redux/apiCoins";
+import TableContainer from "@mui/material/TableContainer";
+import Paper from "@mui/material/Paper";
+import Table from "@mui/material/Table";
+import TableHead from "@mui/material/TableHead";
+import TableBody from "@mui/material/TableBody";
 
 type DataSwitch = {
   newData: Data[];
@@ -23,20 +28,22 @@ export const SwitchCoins = ({ newData }: DataSwitch): JSX.Element => {
 
   return (
     <div>
-      <table style={{ border: "1" }}>
-        <thead>
-          <HeadTable />
-        </thead>
-        <tbody>
-          {currentItems?.length ? (
-            currentItems.map((coin) => (
-              <CoinData key={crypto.randomUUID()} coin={coin} />
-            ))
-          ) : (
-            <h2>No coins</h2>
-          )}
-        </tbody>
-      </table>
+      <TableContainer component={Paper}>
+        <Table sx={{ minWidth: 650 }} aria-label="simple table">
+          <TableHead>
+            <HeadTable />
+          </TableHead>
+          <TableBody>
+            {currentItems?.length ? (
+              currentItems.map((coin) => (
+                <CoinData key={crypto.randomUUID()} coin={coin} />
+              ))
+            ) : (
+              <h2>No coins</h2>
+            )}
+          </TableBody>
+        </Table>
+      </TableContainer>
 
       <div>
         {Array.from({ length: totalPages }, (_, index) => (
