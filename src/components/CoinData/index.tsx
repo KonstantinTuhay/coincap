@@ -11,6 +11,21 @@ type Coin = {
   coin: Data;
 };
 
+const hoverRow = {
+  "&:hover": {
+    backgroundColor: "#80808029",
+    transition: "0.5s",
+  },
+};
+
+const tableCeilStyle = {
+  padding: "10px",
+};
+
+const buttonStyle = {
+  backgroundColor: "#028202e0",
+};
+
 export const CoinData = ({ coin }: Coin): JSX.Element => {
   const navigate = useNavigate();
 
@@ -38,51 +53,30 @@ export const CoinData = ({ coin }: Coin): JSX.Element => {
   } = coin;
   return (
     <>
-      <TableRow>
-        <TableCell
-          sx={{ padding: "10px" }}
-          onClick={() => handleClick(id || "")}
-        >
+      <TableRow sx={hoverRow}>
+        <TableCell sx={tableCeilStyle} onClick={() => handleClick(id || "")}>
           {rank}
         </TableCell>
-        <TableCell
-          sx={{ padding: "10px" }}
-          onClick={() => handleClick(id || "")}
-        >
+        <TableCell sx={tableCeilStyle} onClick={() => handleClick(id || "")}>
           {symbol}
         </TableCell>
-        <TableCell
-          sx={{ padding: "10px" }}
-          onClick={() => handleClick(id || "")}
-        >
+        <TableCell sx={tableCeilStyle} onClick={() => handleClick(id || "")}>
           {name}
         </TableCell>
-        <TableCell
-          sx={{ padding: "10px" }}
-          onClick={() => handleClick(id || "")}
-        >
+        <TableCell sx={tableCeilStyle} onClick={() => handleClick(id || "")}>
           {vwap24Hr} $
         </TableCell>
-        <TableCell
-          sx={{ padding: "10px" }}
-          onClick={() => handleClick(id || "")}
-        >
+        <TableCell sx={tableCeilStyle} onClick={() => handleClick(id || "")}>
           {changePercent24Hr} %
         </TableCell>
-        <TableCell
-          sx={{ padding: "10px" }}
-          onClick={() => handleClick(id || "")}
-        >
+        <TableCell sx={tableCeilStyle} onClick={() => handleClick(id || "")}>
           {marketCapUsd} млрд $
         </TableCell>
-        <TableCell
-          sx={{ padding: "10px" }}
-          onClick={() => handleClick(id || "")}
-        >
+        <TableCell sx={tableCeilStyle} onClick={() => handleClick(id || "")}>
           {priceUsd} $
         </TableCell>
-        <TableCell sx={{ padding: "10px" }} onClick={() => addCoin(id || "")}>
-          <Button variant="contained" sx={{ backgroundColor: "green" }}>
+        <TableCell sx={tableCeilStyle} onClick={() => addCoin(id || "")}>
+          <Button variant="contained" sx={buttonStyle}>
             BUY
           </Button>
         </TableCell>

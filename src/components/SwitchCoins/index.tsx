@@ -7,9 +7,28 @@ import Paper from "@mui/material/Paper";
 import Table from "@mui/material/Table";
 import TableHead from "@mui/material/TableHead";
 import TableBody from "@mui/material/TableBody";
+import Stack from "@mui/material/Stack";
+import Button from "@mui/material/Button";
+import { Box } from "@mui/material";
 
 type DataSwitch = {
   newData: Data[];
+};
+
+const hoverButton = {
+  "&:hover": {
+    borderRadius: "100%",
+    backgroundColor: "#00000016",
+    transition: "1s",
+  },
+  "&:disabled": {
+    color: "black",
+    backgroundColor: "#00000046",
+    transition: "2s",
+  },
+  padding: "14px 8px",
+  borderRadius: "100%",
+  color: "#000000a3",
 };
 
 export const SwitchCoins = ({ newData }: DataSwitch): JSX.Element => {
@@ -27,7 +46,9 @@ export const SwitchCoins = ({ newData }: DataSwitch): JSX.Element => {
   };
 
   return (
-    <div>
+    <Box
+      sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}
+    >
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead>
@@ -45,17 +66,21 @@ export const SwitchCoins = ({ newData }: DataSwitch): JSX.Element => {
         </Table>
       </TableContainer>
 
-      <div>
-        {Array.from({ length: totalPages }, (_, index) => (
-          <button
-            key={index}
-            onClick={() => handlePageChange(index + 1)}
-            disabled={currentPage === index + 1}
-          >
-            {index + 1}
-          </button>
-        ))}
-      </div>
-    </div>
+      <Box>
+        <Stack sx={{ display: "flex", flexDirection: "row", mt: "10px" }}>
+          {Array.from({ length: totalPages }, (_, index) => (
+            <Button
+              sx={hoverButton}
+              variant="text"
+              key={index}
+              onClick={() => handlePageChange(index + 1)}
+              disabled={currentPage === index + 1}
+            >
+              {index + 1}
+            </Button>
+          ))}
+        </Stack>
+      </Box>
+    </Box>
   );
 };
