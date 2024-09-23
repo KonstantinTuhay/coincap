@@ -73,6 +73,7 @@ export const YourBriefcaseModal = ({ open, setOpen }): JSX.Element => {
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
+            mt: "15px",
           }}
         >
           {getYourCoins?.length ? (
@@ -84,6 +85,7 @@ export const YourBriefcaseModal = ({ open, setOpen }): JSX.Element => {
                     <TableCell>Price</TableCell>
                     <TableCell>Quantity</TableCell>
                     <TableCell>Price</TableCell>
+                    <TableCell></TableCell>
                   </TableRow>
                 </TableHead>
 
@@ -104,7 +106,7 @@ export const YourBriefcaseModal = ({ open, setOpen }): JSX.Element => {
             </Box>
           )}
 
-          <Typography sx={{ mt: "5px" }}>Total: {amounts} $</Typography>
+          <Typography sx={{ mt: "20px" }}>Total: {amounts} $</Typography>
         </Box>
       </Box>
     </Modal>
