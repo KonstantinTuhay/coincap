@@ -12,6 +12,8 @@ export const Header = (): JSX.Element => {
         <Box
           style={{
             display: "flex",
+            justifyContent: "space-between",
+            marginTop: "15px",
           }}
         >
           <PopularСryptoCurrencies />
