@@ -1,4 +1,4 @@
-import { JSX } from "react";
+import { JSX, useState } from "react";
 import { Data } from "../../redux/apiCoins";
 import { getCoin } from "../../redux/slices/getDetailsCoin";
 import { useAppDispatch } from "../../hooks/hooks";
@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import TableRow from "@mui/material/TableRow";
 import TableCell from "@mui/material/TableCell";
 import Button from "@mui/material/Button";
+import { AddCoinModal } from "../AddCoinModal";
 
 type Coin = {
   coin: Data;
@@ -38,7 +39,7 @@ export const CoinData = ({ coin }: Coin): JSX.Element => {
 
   const addCoin = (id: string) => {
     dispatch(getCoin(id));
-    navigate("/addcoin");
+    setOpen(true);
   };
 
   const {
@@ -51,8 +52,13 @@ export const CoinData = ({ coin }: Coin): JSX.Element => {
     changePercent24Hr,
     vwap24Hr,
   } = coin;
+
+  const [open, setOpen] = useState(false);
+
   return (
     <>
+      <AddCoinModal open={open} setOpen={setOpen} />
+
       <TableRow sx={hoverRow}>
         <TableCell sx={tableCeilStyle} onClick={() => handleClick(id || "")}>
           {rank}

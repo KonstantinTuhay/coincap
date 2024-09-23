@@ -5,12 +5,15 @@ import { getYourCoin } from "../../redux/slices/listMyCoins";
 import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
 import { useNavigate } from "react-router-dom";
 import { useForm, SubmitHandler } from "react-hook-form";
+import { Button, FormControl, Input, Typography } from "@mui/material";
+import TextField from "@mui/material/TextField";
+// import { Form } from "react-router-dom";
 
 type Inputs = {
   test: number;
 };
 
-export const AmountForm = (): JSX.Element => {
+export const AmountForm = ({ setOpen }): JSX.Element => {
   const {
     register,
     handleSubmit,
@@ -50,23 +53,45 @@ export const AmountForm = (): JSX.Element => {
       coinId: crypto.randomUUID(),
     };
     dispatch(getYourCoin(newObj));
-    navigate("/");
+    setOpen(false);
   };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <p>Enter quantity:</p>
+      <Typography>Enter quantity:</Typography>
 
-      <input
+      <TextField
+        hiddenLabel
+        id="filled-hidden-label-small"
         placeholder="Введите количество"
+        variant="filled"
+        size="small"
+        sx={{
+          m: "20px 0px",
+          border: "1px solid #028202e0",
+          borderRadius: "10px 0px 0px 10px",
+        }}
         type="text"
         {...register("test", {
           pattern: /^\d+([.]?\d+)?$/,
         })}
       />
+
       {errors.test && <span>Введите целое или дробное число через точку</span>}
 
-      <input type="submit" />
+      <Button
+        sx={{
+          m: "20px 0px",
+          border: "1px solid #028202e0",
+          backgroundColor: "#028202e0",
+          borderRadius: "0px 10px 10px 0px",
+          color: "white",
+          height: 42,
+        }}
+        type="submit"
+      >
+        BUY
+      </Button>
     </form>
   );
 };
