@@ -71,7 +71,7 @@ export const AmountForm = ({ setOpen }): JSX.Element => {
         }}
         type="text"
         {...register("test", {
-          pattern: /^\d+([.]?\d+)0?$/,
+          pattern: /^\d+([.]?\d+)?$/,
         })}
       />
 
