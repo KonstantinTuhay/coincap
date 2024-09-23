@@ -4,6 +4,7 @@ import { useAppDispatch } from "../../hooks/hooks";
 import { setPopularCoins } from "../../redux/slices/popularCoins";
 import { changePriceArray } from "../../helpers/changePriceArray";
 import { Data, useGetCoinsQuery } from "../../redux/apiCoins";
+import Container from "@mui/material/Container";
 
 export const MainPage = (): JSX.Element => {
   const { data, error, isLoading } = useGetCoinsQuery();
@@ -36,7 +37,9 @@ export const MainPage = (): JSX.Element => {
 
   return (
     <>
-      <SwitchCoins newData={newData || []} />
+      <Container maxWidth="md">
+        <SwitchCoins newData={newData || []} />
+      </Container>
     </>
   );
 };
