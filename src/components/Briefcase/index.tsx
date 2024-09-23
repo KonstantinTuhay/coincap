@@ -24,20 +24,20 @@ export const Briefcase = (): JSX.Element => {
     <>
       <YourBriefcaseModal open={open} setOpen={setOpen} />
 
-      <div
-        style={{
+      <Box
+        sx={{
           display: "flex",
           marginRight: "300px",
         }}
       >
-        <div style={{ cursor: "pointer" }}>
+        <Box sx={{ cursor: "pointer" }}>
           <WorkOutlineOutlinedIcon
             sx={{ fontSize: 80 }}
             onClick={() => handleClick()}
           />
-        </div>
-        <div
-          style={{
+        </Box>
+        <Box
+          sx={{
             display: "flex",
             flexDirection: "column",
             margin: "15px 0px 15px 10px",
@@ -45,8 +45,8 @@ export const Briefcase = (): JSX.Element => {
         >
           <Typography>Total:</Typography>
           <Typography>{amounts} USD</Typography>
-        </div>
-      </div>
+        </Box>
+      </Box>
     </>
   );
 };
