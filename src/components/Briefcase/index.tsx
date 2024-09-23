@@ -1,6 +1,7 @@
 import { JSX } from "react";
 import { useAppSelector } from "../../hooks/hooks";
 import { useNavigate } from "react-router-dom";
+import WalletIcon from "@mui/icons-material/Wallet";
 
 export const Briefcase = (): JSX.Element => {
   const getTotal = useAppSelector((state) => state.listMyCoins);
@@ -20,7 +21,9 @@ export const Briefcase = (): JSX.Element => {
         display: "flex",
       }}
     >
-      <div onClick={() => handleClick()}>Портфель</div>
+      <div onClick={() => handleClick()}>
+        <WalletIcon />
+      </div>
       <div
         style={{
           display: "flex",

@@ -3,21 +3,22 @@ import { changePriceObject } from "../../helpers/changePriceObject";
 import { useGetDetailsCoinQuery } from "../../redux/apiCoins";
 import { getYourCoin } from "../../redux/slices/listMyCoins";
 import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
-import { useNavigate } from "react-router-dom";
 import { useForm, SubmitHandler } from "react-hook-form";
+import { Button, Typography } from "@mui/material";
+import TextField from "@mui/material/TextField";
+import Alert from "@mui/material/Alert";
 
 type Inputs = {
   test: number;
 };
 
-export const AmountForm = (): JSX.Element => {
+export const AmountForm = ({ setOpen }): JSX.Element => {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<Inputs>();
 
-  const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const currentId = useAppSelector((state) => state.getDetailsCoin);
 
@@ -50,23 +51,49 @@ export const AmountForm = (): JSX.Element => {
       coinId: crypto.randomUUID(),
     };
     dispatch(getYourCoin(newObj));
-    navigate("/");
+    setOpen(false);
   };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <p>Enter quantity:</p>
+      <Typography>Enter quantity:</Typography>
 
-      <input
+      <TextField
+        hiddenLabel
+        id="filled-hidden-label-small"
         placeholder="Введите количество"
+        variant="filled"
+        size="small"
+        sx={{
+          m: "20px 0px",
+          border: "1px solid #028202e0",
+          borderRadius: "10px 0px 0px 10px",
+        }}
         type="text"
         {...register("test", {
           pattern: /^\d+([.]?\d+)?$/,
         })}
       />
-      {errors.test && <span>Введите целое или дробное число через точку</span>}
 
-      <input type="submit" />
+      <Button
+        sx={{
+          m: "20px 0px",
+          border: "1px solid #028202e0",
+          backgroundColor: "#028202e0",
+          borderRadius: "0px 10px 10px 0px",
+          color: "white",
+          height: 42,
+        }}
+        type="submit"
+      >
+        BUY
+      </Button>
+
+      {errors.test && (
+        <Alert variant="outlined" severity="warning">
+          Введите целое или дробное число через точку
+        </Alert>
+      )}
     </form>
   );
 };
