@@ -39,22 +39,49 @@ export const CoinData = ({ coin }: Coin): JSX.Element => {
   return (
     <>
       <TableRow>
-        <TableCell onClick={() => handleClick(id || "")}>{rank}</TableCell>
-        <TableCell onClick={() => handleClick(id || "")}>{symbol}</TableCell>
-        <TableCell onClick={() => handleClick(id || "")}>{name}</TableCell>
-        <TableCell onClick={() => handleClick(id || "")}>
+        <TableCell
+          sx={{ padding: "10px" }}
+          onClick={() => handleClick(id || "")}
+        >
+          {rank}
+        </TableCell>
+        <TableCell
+          sx={{ padding: "10px" }}
+          onClick={() => handleClick(id || "")}
+        >
+          {symbol}
+        </TableCell>
+        <TableCell
+          sx={{ padding: "10px" }}
+          onClick={() => handleClick(id || "")}
+        >
+          {name}
+        </TableCell>
+        <TableCell
+          sx={{ padding: "10px" }}
+          onClick={() => handleClick(id || "")}
+        >
           {vwap24Hr} $
         </TableCell>
-        <TableCell onClick={() => handleClick(id || "")}>
+        <TableCell
+          sx={{ padding: "10px" }}
+          onClick={() => handleClick(id || "")}
+        >
           {changePercent24Hr} %
         </TableCell>
-        <TableCell onClick={() => handleClick(id || "")}>
+        <TableCell
+          sx={{ padding: "10px" }}
+          onClick={() => handleClick(id || "")}
+        >
           {marketCapUsd} млрд $
         </TableCell>
-        <TableCell onClick={() => handleClick(id || "")}>
+        <TableCell
+          sx={{ padding: "10px" }}
+          onClick={() => handleClick(id || "")}
+        >
           {priceUsd} $
         </TableCell>
-        <TableCell onClick={() => addCoin(id || "")}>
+        <TableCell sx={{ padding: "10px" }} onClick={() => addCoin(id || "")}>
           <Button variant="contained" sx={{ backgroundColor: "green" }}>
             BUY
           </Button>
