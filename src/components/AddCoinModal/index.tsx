@@ -2,11 +2,8 @@ import { JSX } from "react";
 import { AmountForm } from "../AmountForm";
 import { useAppSelector } from "../../hooks/hooks";
 import { useGetDetailsCoinQuery } from "../../redux/apiCoins";
-import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
-import Modal from "@mui/material/Modal";
+import { Button, keyframes, Modal, Typography, Box } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
-import { Button, keyframes } from "@mui/material";
 import MonetizationOnOutlinedIcon from "@mui/icons-material/MonetizationOnOutlined";
 
 const closeButtonStyled = {

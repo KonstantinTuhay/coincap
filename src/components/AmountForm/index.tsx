@@ -4,9 +4,7 @@ import { useGetDetailsCoinQuery } from "../../redux/apiCoins";
 import { getYourCoin } from "../../redux/slices/listMyCoins";
 import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
 import { useForm, SubmitHandler } from "react-hook-form";
-import { Button, keyframes, Typography } from "@mui/material";
-import TextField from "@mui/material/TextField";
-import Alert from "@mui/material/Alert";
+import { Button, keyframes, Typography, TextField, Alert } from "@mui/material";
 import MonetizationOnOutlinedIcon from "@mui/icons-material/MonetizationOnOutlined";
 import { useNavigate } from "react-router-dom";
 

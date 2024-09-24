@@ -1,9 +1,7 @@
 import { JSX } from "react";
 import { useAppDispatch } from "../../hooks/hooks";
 import { InitialState, sellCoin } from "../../redux/slices/listMyCoins";
-import TableRow from "@mui/material/TableRow";
-import TableCell from "@mui/material/TableCell";
-import Button from "@mui/material/Button";
+import { TableRow, TableCell, Button } from "@mui/material";
 
 type YourCoin = {
   yourCoin: InitialState;

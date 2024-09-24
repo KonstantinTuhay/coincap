@@ -1,19 +1,21 @@
 import { JSX } from "react";
 import { useAppSelector } from "../../hooks/hooks";
 import { YourListCoins } from "../YourListCoins";
-import Modal from "@mui/material/Modal";
-import { Box } from "@mui/material";
-import Typography from "@mui/material/Typography";
-import { Button } from "@mui/material";
+import {
+  Box,
+  Modal,
+  Typography,
+  Button,
+  TableContainer,
+  Paper,
+  Table,
+  TableHead,
+  TableRow,
+  TableCell,
+  TableBody,
+} from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import MoneyOffCsredOutlinedIcon from "@mui/icons-material/MoneyOffCsredOutlined";
-import TableContainer from "@mui/material/TableContainer";
-import Paper from "@mui/material/Paper";
-import Table from "@mui/material/Table";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
-import TableCell from "@mui/material/TableCell";
-import TableBody from "@mui/material/TableBody";
 
 const closeButtonStyled = {
   "&:hover": {

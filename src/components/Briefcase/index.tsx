@@ -1,8 +1,8 @@
 import { JSX, useState } from "react";
 import { useAppSelector } from "../../hooks/hooks";
-import WorkOutlineOutlinedIcon from "@mui/icons-material/WorkOutlineOutlined";
-import { Box, Typography } from "@mui/material";
 import { YourBriefcaseModal } from "../YourBriefCaseModal";
+import { Box, Typography } from "@mui/material";
+import WorkOutlineOutlinedIcon from "@mui/icons-material/WorkOutlineOutlined";
 
 export const Briefcase = (): JSX.Element => {
   const [open, setOpen] = useState(false);
