@@ -4,16 +4,24 @@ import { useGetDetailsCoinQuery } from "../../redux/apiCoins";
 import { getYourCoin } from "../../redux/slices/listMyCoins";
 import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
 import { useForm, SubmitHandler } from "react-hook-form";
-import { Button, Typography } from "@mui/material";
+import { Button, keyframes, Typography } from "@mui/material";
 import TextField from "@mui/material/TextField";
 import Alert from "@mui/material/Alert";
 import MonetizationOnOutlinedIcon from "@mui/icons-material/MonetizationOnOutlined";
-import styles from "./index.module.css";
 import { useNavigate } from "react-router-dom";
 
 type Inputs = {
   test: number;
 };
+
+const anim = keyframes`
+   0% {
+    transform: perspective(23rem) rotateY(0deg);
+  }
+  100% {
+    transform: perspective(10rem) rotateY(360deg);
+  }
+`;
 
 export const AmountForm = ({ setOpen }): JSX.Element => {
   const {
@@ -32,11 +40,12 @@ export const AmountForm = ({ setOpen }): JSX.Element => {
   if (isLoading) {
     return (
       <MonetizationOnOutlinedIcon
-        className={styles.animatTxt}
         style={{
           color: "#ffd900",
           fontSize: "100px",
           position: "relative",
+          animation: `${anim} 1s linear infinite`,
+          transition: `all 0.5s ease`,
         }}
       />
     );
