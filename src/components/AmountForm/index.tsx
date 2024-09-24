@@ -35,8 +35,6 @@ export const AmountForm = (): JSX.Element => {
           color: "#ffd900",
           fontSize: "100px",
           position: "relative",
-          left: "50%",
-          top: 150,
         }}
       />
     );
