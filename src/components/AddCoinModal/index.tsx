@@ -52,7 +52,18 @@ export const AddCoinModal = ({
   const { data, error, isLoading } = useGetDetailsCoinQuery(currentId);
 
   if (isLoading) {
-    return <MonetizationOnOutlinedIcon className={styles.anim} />;
+    return (
+      <MonetizationOnOutlinedIcon
+        className={styles.animatTxt}
+        style={{
+          color: "#ffd900",
+          fontSize: "100px",
+          position: "relative",
+          left: "50%",
+          top: 150,
+        }}
+      />
+    );
   }
 
   if (error) {
