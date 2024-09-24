@@ -7,6 +7,8 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { Button, Typography } from "@mui/material";
 import TextField from "@mui/material/TextField";
 import Alert from "@mui/material/Alert";
+import MonetizationOnOutlinedIcon from "@mui/icons-material/MonetizationOnOutlined";
+import styles from "./index.module.css";
 
 type Inputs = {
   test: number;
@@ -26,7 +28,18 @@ export const AmountForm = (): JSX.Element => {
   const newData = changePriceObject(data || {});
 
   if (isLoading) {
-    return <p>Loading...</p>;
+    return (
+      <MonetizationOnOutlinedIcon
+        className={styles.animatTxt}
+        style={{
+          color: "#ffd900",
+          fontSize: "100px",
+          position: "relative",
+          left: "50%",
+          top: 150,
+        }}
+      />
+    );
   }
 
   if (error) {

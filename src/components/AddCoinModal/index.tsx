@@ -7,6 +7,8 @@ import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import CloseIcon from "@mui/icons-material/Close";
 import { Button } from "@mui/material";
+import MonetizationOnOutlinedIcon from "@mui/icons-material/MonetizationOnOutlined";
+import styles from "./index.module.css";
 
 const closeButtonStyled = {
   "&:hover": {
@@ -32,7 +34,18 @@ export const AddCoinModal = ({ open, setOpen }): JSX.Element => {
   const { data, error, isLoading } = useGetDetailsCoinQuery(currentId);
 
   if (isLoading) {
-    return <p>Loading...</p>;
+    return (
+      <MonetizationOnOutlinedIcon
+        className={styles.animatTxt}
+        style={{
+          color: "#ffd900",
+          fontSize: "100px",
+          position: "relative",
+          left: "50%",
+          top: 150,
+        }}
+      />
+    );
   }
 
   if (error) {
