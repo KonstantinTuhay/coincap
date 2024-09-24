@@ -5,7 +5,7 @@ import { changePriceObject } from "../../helpers/changePriceObject";
 import { Data, useGetDetailsCoinQuery } from "../../redux/apiCoins";
 import { useNavigate } from "react-router-dom";
 import { Box } from "@mui/material";
-import { useGetDetailsGraphicQuery } from "../../redux/apiCoins";
+import { Chart } from "../Chart";
 
 export const NameCurrency = (): JSX.Element => {
   const navigate = useNavigate();
@@ -16,7 +16,6 @@ export const NameCurrency = (): JSX.Element => {
 
   const currentId = useAppSelector((state) => state.getDetailsCoin);
 
-  const { dataGraph } = useGetDetailsGraphicQuery(currentId);
   const { data, error, isLoading } = useGetDetailsCoinQuery(currentId);
   const newData: Data = changePriceObject(data || {});
 
@@ -51,6 +50,7 @@ export const NameCurrency = (): JSX.Element => {
       <p>{newData?.name} / USD</p>
       <div>
         <p>График ----------------------------------</p>
+        <Chart></Chart>
       </div>
       <div>
         <AmountForm />

@@ -66,7 +66,7 @@ export const apiCoins = createApi({
     getDetailsGraphic: builder.query<DataGraph[], string>({
       query: (id) => {
         return {
-          url: `/${id}/history?interval=d1`,
+          url: `assets/${id}/history?interval=d1`,
           method: "GET",
           headers,
         };
