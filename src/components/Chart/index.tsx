@@ -6,13 +6,11 @@ import { useAppSelector } from "../../hooks/hooks";
 export const Chart = () => {
   const currentId = useAppSelector((state) => state.getDetailsCoin);
   const { data } = useGetDetailsGraphicQuery(currentId);
-  //   console.log(data);
 
   const initialData = [];
 
   data?.map((item) => {
     const date = new Date();
-    // .setTime(`${item.time}`);
     date.setTime(item.time);
 
     return initialData.push({
@@ -25,7 +23,6 @@ export const Chart = () => {
         ("0" + date.getDate()).slice(-2),
     });
   });
-  console.log(initialData);
 
   const chartContainerRef = useRef();
 

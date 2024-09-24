@@ -50,7 +50,7 @@ export const NameCurrency = (): JSX.Element => {
       <p>{newData?.name} / USD</p>
       <div>
         <p>График ----------------------------------</p>
-        <Chart></Chart>
+        <Chart />
       </div>
       <div>
         <AmountForm />
