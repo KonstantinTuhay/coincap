@@ -1,20 +1,24 @@
 import { JSX } from "react";
-import { useAppSelector } from "../../hooks/hooks";
-import { AmountForm } from "../AmountForm";
-import { changePriceObject } from "../../helpers/changePriceObject";
-import { Data, useGetDetailsCoinQuery } from "../../redux/apiCoins";
 import { useNavigate } from "react-router-dom";
-import { Box, keyframes, Typography } from "@mui/material";
+import { AmountForm } from "../AmountForm";
+import { Data, useGetDetailsCoinQuery } from "../../redux/apiCoins";
+import { changePriceObject } from "../../helpers/changePriceObject";
+import { useAppSelector } from "../../hooks/hooks";
 import { Chart } from "../Chart";
-import TableContainer from "@mui/material/TableContainer";
-import Paper from "@mui/material/Paper";
-import Table from "@mui/material/Table";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
-import TableCell from "@mui/material/TableCell";
-import TableBody from "@mui/material/TableBody";
-import Link from "@mui/material/Link";
-import Button from "@mui/material/Button";
+import {
+  Box,
+  keyframes,
+  Typography,
+  TableContainer,
+  Paper,
+  Table,
+  TableHead,
+  TableRow,
+  TableCell,
+  TableBody,
+  Link,
+  Button,
+} from "@mui/material";
 import MonetizationOnOutlinedIcon from "@mui/icons-material/MonetizationOnOutlined";
 
 const anim = keyframes`
@@ -97,7 +101,11 @@ export const NameCurrency = (): JSX.Element => {
       </Box>
 
       <Box sx={{ mt: "10px" }}>
-        <AmountForm />
+        <AmountForm
+          setOpen={function (): void {
+            throw new Error("Function not implemented.");
+          }}
+        />
       </Box>
 
       <TableContainer component={Paper}>

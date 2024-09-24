@@ -1,6 +1,5 @@
 import { JSX } from "react";
-import TableRow from "@mui/material/TableRow";
-import TableCell from "@mui/material/TableCell";
+import { TableRow, TableCell } from "@mui/material";
 
 export const HeadTable = (): JSX.Element => {
   return (

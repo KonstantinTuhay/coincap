@@ -2,14 +2,17 @@ import { JSX, useState } from "react";
 import { HeadTable } from "../HeadTable";
 import { CoinData } from "../CoinData";
 import { Data } from "../../redux/apiCoins";
-import TableContainer from "@mui/material/TableContainer";
-import Paper from "@mui/material/Paper";
-import Table from "@mui/material/Table";
-import TableHead from "@mui/material/TableHead";
-import TableBody from "@mui/material/TableBody";
-import Stack from "@mui/material/Stack";
-import Button from "@mui/material/Button";
-import { Box } from "@mui/material";
+import {
+  TableContainer,
+  Paper,
+  Table,
+  TableHead,
+  TableBody,
+  Stack,
+  Button,
+  Box,
+  Typography,
+} from "@mui/material";
 
 type DataSwitch = {
   newData: Data[];
@@ -60,7 +63,7 @@ export const SwitchCoins = ({ newData }: DataSwitch): JSX.Element => {
                 <CoinData key={crypto.randomUUID()} coin={coin} />
               ))
             ) : (
-              <h2>No coins</h2>
+              <Typography variant="h3">No coins</Typography>
             )}
           </TableBody>
         </Table>

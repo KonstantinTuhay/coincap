@@ -4,14 +4,23 @@ import { useGetDetailsCoinQuery } from "../../redux/apiCoins";
 import { getYourCoin } from "../../redux/slices/listMyCoins";
 import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
 import { useForm, SubmitHandler } from "react-hook-form";
-import { Button, keyframes, Typography } from "@mui/material";
-import TextField from "@mui/material/TextField";
-import Alert from "@mui/material/Alert";
+import {
+  Button,
+  keyframes,
+  Typography,
+  TextField,
+  Alert,
+  Box,
+} from "@mui/material";
 import MonetizationOnOutlinedIcon from "@mui/icons-material/MonetizationOnOutlined";
 import { useNavigate } from "react-router-dom";
 
 type Inputs = {
   test: number;
+};
+
+type ModalFunc = {
+  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 const anim = keyframes`
@@ -23,7 +32,7 @@ const anim = keyframes`
   }
 `;
 
-export const AmountForm = ({ setOpen }): JSX.Element => {
+export const AmountForm = ({ setOpen }: ModalFunc): JSX.Element => {
   const {
     register,
     handleSubmit,
@@ -57,13 +66,13 @@ export const AmountForm = ({ setOpen }): JSX.Element => {
         "error" in error ? error.error : JSON.stringify(error.data);
 
       return (
-        <div>
-          <div>An error has occurred:</div>
-          <div>{errMsg}</div>
-        </div>
+        <Box>
+          <Box>An error has occurred:</Box>
+          <Box>{errMsg}</Box>
+        </Box>
       );
     }
-    return <div>Error: {error.message}</div>;
+    return <Box>Error: {error.message}</Box>;
   }
 
   const onSubmit: SubmitHandler<Inputs> = (data) => {

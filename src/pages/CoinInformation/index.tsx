@@ -4,10 +4,8 @@ import Container from "@mui/material/Container";
 
 export const CoinInformation = (): JSX.Element => {
   return (
-    <>
-      <Container maxWidth="md">
-        <NameCurrency />
-      </Container>
-    </>
+    <Container maxWidth="md">
+      <NameCurrency />
+    </Container>
   );
 };

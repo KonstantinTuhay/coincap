@@ -1,12 +1,10 @@
 import { JSX, useState } from "react";
 import { Data } from "../../redux/apiCoins";
 import { getCoin } from "../../redux/slices/getDetailsCoin";
+import { AddCoinModal } from "../AddCoinModal";
 import { useAppDispatch } from "../../hooks/hooks";
 import { useNavigate } from "react-router-dom";
-import TableRow from "@mui/material/TableRow";
-import TableCell from "@mui/material/TableCell";
-import Button from "@mui/material/Button";
-import { AddCoinModal } from "../AddCoinModal";
+import { TableRow, TableCell, Button } from "@mui/material";
 
 type Coin = {
   coin: Data;
@@ -53,7 +51,7 @@ export const CoinData = ({ coin }: Coin): JSX.Element => {
     vwap24Hr,
   } = coin;
 
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState<boolean>(false);
 
   return (
     <>

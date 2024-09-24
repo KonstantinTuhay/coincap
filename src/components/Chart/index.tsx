@@ -1,13 +1,18 @@
 import { createChart, ColorType } from "lightweight-charts";
-import { useEffect, useRef } from "react";
+import { DetailedHTMLProps, HTMLAttributes, useEffect, useRef } from "react";
 import { useGetDetailsGraphicQuery } from "../../redux/apiCoins";
 import { useAppSelector } from "../../hooks/hooks";
+
+type InitialData = {
+  value: number;
+  time: string;
+};
 
 export const Chart = () => {
   const currentId = useAppSelector((state) => state.getDetailsCoin);
   const { data } = useGetDetailsGraphicQuery(currentId);
 
-  const initialData = [];
+  const initialData: InitialData[] = [];
 
   data?.map((item) => {
     const date = new Date();
@@ -24,7 +29,10 @@ export const Chart = () => {
     });
   });
 
-  const chartContainerRef = useRef();
+  const chartContainerRef:
+    | React.MutableRefObject<undefined>
+    | DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> =
+    useRef();
 
   useEffect(() => {
     const handleResize = () => {

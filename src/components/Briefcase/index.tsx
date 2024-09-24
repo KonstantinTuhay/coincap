@@ -1,11 +1,11 @@
 import { JSX, useState } from "react";
 import { useAppSelector } from "../../hooks/hooks";
-import WorkOutlineOutlinedIcon from "@mui/icons-material/WorkOutlineOutlined";
-import { Box, Typography } from "@mui/material";
 import { YourBriefcaseModal } from "../YourBriefCaseModal";
+import { Box, Typography } from "@mui/material";
+import WorkOutlineOutlinedIcon from "@mui/icons-material/WorkOutlineOutlined";
 
 export const Briefcase = (): JSX.Element => {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState<boolean>(false);
 
   const getTotal = useAppSelector((state) => state.listMyCoins);
   const amounts = getTotal
@@ -13,11 +13,7 @@ export const Briefcase = (): JSX.Element => {
     .toFixed(2);
 
   const handleClick = () => {
-    console.log(1111);
     setOpen(true);
-    console.log(open);
-
-    console.log(1111);
   };
 
   return (
