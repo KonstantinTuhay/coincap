@@ -51,7 +51,7 @@ export const CoinData = ({ coin }: Coin): JSX.Element => {
     vwap24Hr,
   } = coin;
 
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState<boolean>(false);
 
   return (
     <>

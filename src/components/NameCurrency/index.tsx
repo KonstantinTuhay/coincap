@@ -101,7 +101,11 @@ export const NameCurrency = (): JSX.Element => {
       </Box>
 
       <Box sx={{ mt: "10px" }}>
-        <AmountForm />
+        <AmountForm
+          setOpen={function (): void {
+            throw new Error("Function not implemented.");
+          }}
+        />
       </Box>
 
       <TableContainer component={Paper}>

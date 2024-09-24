@@ -4,7 +4,6 @@ import { useAppDispatch } from "../../hooks/hooks";
 import { setPopularCoins } from "../../redux/slices/popularCoins";
 import { changePriceArray } from "../../helpers/changePriceArray";
 import { Data, useGetCoinsQuery } from "../../redux/apiCoins";
-import Container from "@mui/material/Container";
 import { keyframes, Container } from "@mui/material";
 import MonetizationOnOutlinedIcon from "@mui/icons-material/MonetizationOnOutlined";
 

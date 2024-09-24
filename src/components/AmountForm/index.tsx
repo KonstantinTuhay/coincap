@@ -21,7 +21,11 @@ const anim = keyframes`
   }
 `;
 
-export const AmountForm = ({ setOpen }): JSX.Element => {
+type ModalFunc = {
+  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
+export const AmountForm = ({ setOpen }: ModalFunc): JSX.Element => {
   const {
     register,
     handleSubmit,

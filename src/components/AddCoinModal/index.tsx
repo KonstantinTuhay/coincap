@@ -1,10 +1,15 @@
-import { JSX } from "react";
+import React, { JSX } from "react";
 import { AmountForm } from "../AmountForm";
 import { useAppSelector } from "../../hooks/hooks";
 import { useGetDetailsCoinQuery } from "../../redux/apiCoins";
 import { Button, keyframes, Modal, Typography, Box } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import MonetizationOnOutlinedIcon from "@mui/icons-material/MonetizationOnOutlined";
+
+export type ModalOpenClose = {
+  open: boolean;
+  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+};
 
 const closeButtonStyled = {
   "&:hover": {
@@ -29,7 +34,10 @@ const anim = keyframes`
   }
 `;
 
-export const AddCoinModal = ({ open, setOpen }): JSX.Element => {
+export const AddCoinModal = ({
+  open,
+  setOpen,
+}: ModalOpenClose): JSX.Element => {
   const currentId = useAppSelector((state) => state.getDetailsCoin);
 
   const clickBack = () => {
