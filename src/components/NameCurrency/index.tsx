@@ -56,7 +56,7 @@ export const NameCurrency = (): JSX.Element => {
       }}
     >
       <Button
-        sx={{ position: "absolute", left: "350px", top: "110px" }}
+        sx={{ position: "relative", top: "40px", right: "370px" }}
         variant="outlined"
         onClick={() => handleClick()}
       >
@@ -64,7 +64,7 @@ export const NameCurrency = (): JSX.Element => {
       </Button>
 
       <Box>
-        <Typography variant="h5" sx={{ mt: "10px", textAlign: "center" }}>
+        <Typography variant="h5" sx={{ textAlign: "center" }}>
           {newData?.symbol}{" "}
         </Typography>
         <Typography>{newData?.name} / USD</Typography>
