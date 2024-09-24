@@ -11,6 +11,7 @@ import {
   Stack,
   Button,
   Box,
+  Typography,
 } from "@mui/material";
 
 type DataSwitch = {
@@ -62,7 +63,7 @@ export const SwitchCoins = ({ newData }: DataSwitch): JSX.Element => {
                 <CoinData key={crypto.randomUUID()} coin={coin} />
               ))
             ) : (
-              <h2>No coins</h2>
+              <Typography variant="h3">No coins</Typography>
             )}
           </TableBody>
         </Table>
