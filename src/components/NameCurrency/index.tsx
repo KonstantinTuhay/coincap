@@ -4,7 +4,7 @@ import { AmountForm } from "../AmountForm";
 import { changePriceObject } from "../../helpers/changePriceObject";
 import { Data, useGetDetailsCoinQuery } from "../../redux/apiCoins";
 import { useNavigate } from "react-router-dom";
-import { Box, Typography } from "@mui/material";
+import { Box, keyframes, Typography } from "@mui/material";
 import { Chart } from "../Chart";
 import TableContainer from "@mui/material/TableContainer";
 import Paper from "@mui/material/Paper";
@@ -15,6 +15,8 @@ import TableCell from "@mui/material/TableCell";
 import TableBody from "@mui/material/TableBody";
 import Link from "@mui/material/Link";
 import Button from "@mui/material/Button";
+import styles from "./inex.module.css";
+import MonetizationOnOutlinedIcon from "@mui/icons-material/MonetizationOnOutlined";
 
 export const NameCurrency = (): JSX.Element => {
   const navigate = useNavigate();
@@ -29,7 +31,18 @@ export const NameCurrency = (): JSX.Element => {
   const newData: Data = changePriceObject(data || {});
 
   if (isLoading) {
-    return <p>Loading...</p>;
+    return (
+      <MonetizationOnOutlinedIcon
+        className={styles.animatTxt}
+        style={{
+          color: "#ffd900",
+          fontSize: "100px",
+          position: "relative",
+          left: "50%",
+          top: 150,
+        }}
+      />
+    );
   }
 
   if (error) {
