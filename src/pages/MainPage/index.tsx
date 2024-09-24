@@ -4,17 +4,9 @@ import { useAppDispatch } from "../../hooks/hooks";
 import { setPopularCoins } from "../../redux/slices/popularCoins";
 import { changePriceArray } from "../../helpers/changePriceArray";
 import { Data, useGetCoinsQuery } from "../../redux/apiCoins";
-import { keyframes, Container } from "@mui/material";
+import { Container } from "@mui/material";
 import MonetizationOnOutlinedIcon from "@mui/icons-material/MonetizationOnOutlined";
-
-const anim = keyframes`
-   0% {
-    transform: perspective(23rem) rotateY(0deg);
-  }
-  100% {
-    transform: perspective(10rem) rotateY(360deg);
-  }
-`;
+import styles from "./index.module.css";
 
 export const MainPage = (): JSX.Element => {
   const { data, error, isLoading } = useGetCoinsQuery();
@@ -29,14 +21,13 @@ export const MainPage = (): JSX.Element => {
   if (isLoading) {
     return (
       <MonetizationOnOutlinedIcon
+        className={styles.animatTxt}
         style={{
           color: "#ffd900",
           fontSize: "100px",
           position: "relative",
-          left: "50%",
+          left: "45%",
           top: 150,
-          animation: `${anim} 1s linear infinite`,
-          transition: `all 0.5s ease`,
         }}
       />
     );

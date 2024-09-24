@@ -2,9 +2,10 @@ import React, { JSX } from "react";
 import { AmountForm } from "../AmountForm";
 import { useAppSelector } from "../../hooks/hooks";
 import { useGetDetailsCoinQuery } from "../../redux/apiCoins";
-import { Button, keyframes, Modal, Typography, Box } from "@mui/material";
+import { Button, Modal, Typography, Box } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import MonetizationOnOutlinedIcon from "@mui/icons-material/MonetizationOnOutlined";
+import styles from "./index.module.css";
 
 export type ModalOpenClose = {
   open: boolean;
@@ -24,15 +25,6 @@ const closeButtonStyled = {
   borderRadius: "20px",
   color: "black",
 };
-
-const anim = keyframes`
-   0% {
-    transform: perspective(23rem) rotateY(0deg);
-  }
-  100% {
-    transform: perspective(10rem) rotateY(360deg);
-  }
-`;
 
 const style = {
   position: "absolute",
@@ -62,14 +54,13 @@ export const AddCoinModal = ({
   if (isLoading) {
     return (
       <MonetizationOnOutlinedIcon
+        className={styles.animatTxt}
         style={{
           color: "#ffd900",
           fontSize: "100px",
           position: "relative",
           left: "50%",
           top: 150,
-          animation: `${anim} 1s linear infinite`,
-          transition: `all 0.5s ease`,
         }}
       />
     );
