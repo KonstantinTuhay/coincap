@@ -6,7 +6,16 @@ import { changePriceArray } from "../../helpers/changePriceArray";
 import { Data, useGetCoinsQuery } from "../../redux/apiCoins";
 import Container from "@mui/material/Container";
 import MonetizationOnOutlinedIcon from "@mui/icons-material/MonetizationOnOutlined";
-import styles from "./index.module.css";
+import { keyframes } from "@mui/material";
+
+const anim = keyframes`
+   0% {
+    transform: perspective(23rem) rotateY(0deg);
+  }
+  100% {
+    transform: perspective(10rem) rotateY(360deg);
+  }
+`;
 
 export const MainPage = (): JSX.Element => {
   const { data, error, isLoading } = useGetCoinsQuery();
@@ -21,13 +30,14 @@ export const MainPage = (): JSX.Element => {
   if (isLoading) {
     return (
       <MonetizationOnOutlinedIcon
-        className={styles.animatTxt}
         style={{
           color: "#ffd900",
           fontSize: "100px",
           position: "relative",
           left: "50%",
           top: 150,
+          animation: `${anim} 1s linear infinite`,
+          transition: `all 0.5s ease`,
         }}
       />
     );

@@ -6,9 +6,8 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import CloseIcon from "@mui/icons-material/Close";
-import { Button } from "@mui/material";
+import { Button, keyframes } from "@mui/material";
 import MonetizationOnOutlinedIcon from "@mui/icons-material/MonetizationOnOutlined";
-import styles from "./index.module.css";
 
 const closeButtonStyled = {
   "&:hover": {
@@ -24,6 +23,15 @@ const closeButtonStyled = {
   color: "black",
 };
 
+const anim = keyframes`
+   0% {
+    transform: perspective(23rem) rotateY(0deg);
+  }
+  100% {
+    transform: perspective(10rem) rotateY(360deg);
+  }
+`;
+
 export const AddCoinModal = ({ open, setOpen }): JSX.Element => {
   const currentId = useAppSelector((state) => state.getDetailsCoin);
 
@@ -36,13 +44,14 @@ export const AddCoinModal = ({ open, setOpen }): JSX.Element => {
   if (isLoading) {
     return (
       <MonetizationOnOutlinedIcon
-        className={styles.animatTxt}
         style={{
           color: "#ffd900",
           fontSize: "100px",
           position: "relative",
           left: "50%",
           top: 150,
+          animation: `${anim} 1s linear infinite`,
+          transition: `all 0.5s ease`,
         }}
       />
     );
