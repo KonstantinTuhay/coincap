@@ -15,8 +15,16 @@ import TableCell from "@mui/material/TableCell";
 import TableBody from "@mui/material/TableBody";
 import Link from "@mui/material/Link";
 import Button from "@mui/material/Button";
-import styles from "./inex.module.css";
 import MonetizationOnOutlinedIcon from "@mui/icons-material/MonetizationOnOutlined";
+
+const anim = keyframes`
+   0% {
+    transform: perspective(23rem) rotateY(0deg);
+  }
+  100% {
+    transform: perspective(10rem) rotateY(360deg);
+  }
+`;
 
 export const NameCurrency = (): JSX.Element => {
   const navigate = useNavigate();
@@ -33,13 +41,14 @@ export const NameCurrency = (): JSX.Element => {
   if (isLoading) {
     return (
       <MonetizationOnOutlinedIcon
-        className={styles.animatTxt}
         style={{
           color: "#ffd900",
           fontSize: "100px",
           position: "relative",
           left: "50%",
           top: 150,
+          animation: `${anim} 1s linear infinite`,
+          transition: `all 0.5s ease`,
         }}
       />
     );
