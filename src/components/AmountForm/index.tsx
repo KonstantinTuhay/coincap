@@ -12,7 +12,7 @@ type Inputs = {
   test: number;
 };
 
-export const AmountForm = ({ setOpen }): JSX.Element => {
+export const AmountForm = (): JSX.Element => {
   const {
     register,
     handleSubmit,
@@ -51,12 +51,11 @@ export const AmountForm = ({ setOpen }): JSX.Element => {
       coinId: crypto.randomUUID(),
     };
     dispatch(getYourCoin(newObj));
-    setOpen(false);
   };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <Typography>Enter quantity:</Typography>
+      <Typography sx={{ textAlign: "center" }}>Enter quantity:</Typography>
 
       <TextField
         hiddenLabel
