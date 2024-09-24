@@ -35,7 +35,7 @@ export const Chart = () => {
       layout: {
         background: { type: ColorType.Solid, color: "#ffffff" },
       },
-      width: 700,
+      width: 840,
       height: 300,
     });
     chart.timeScale().fitContent();

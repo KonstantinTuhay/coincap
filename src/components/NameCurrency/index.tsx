@@ -4,8 +4,17 @@ import { AmountForm } from "../AmountForm";
 import { changePriceObject } from "../../helpers/changePriceObject";
 import { Data, useGetDetailsCoinQuery } from "../../redux/apiCoins";
 import { useNavigate } from "react-router-dom";
-import { Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { Chart } from "../Chart";
+import TableContainer from "@mui/material/TableContainer";
+import Paper from "@mui/material/Paper";
+import Table from "@mui/material/Table";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+import TableCell from "@mui/material/TableCell";
+import TableBody from "@mui/material/TableBody";
+import Link from "@mui/material/Link";
+import Button from "@mui/material/Button";
 
 export const NameCurrency = (): JSX.Element => {
   const navigate = useNavigate();
@@ -46,56 +55,80 @@ export const NameCurrency = (): JSX.Element => {
         alignItems: "center",
       }}
     >
-      <p>{newData?.symbol} </p>
-      <p>{newData?.name} / USD</p>
-      <div>
-        <p>График ----------------------------------</p>
+      <Button
+        sx={{ position: "absolute", left: "350px", top: "110px" }}
+        variant="outlined"
+        onClick={() => handleClick()}
+      >
+        Back
+      </Button>
+
+      <Box>
+        <Typography variant="h5" sx={{ mt: "10px", textAlign: "center" }}>
+          {newData?.symbol}{" "}
+        </Typography>
+        <Typography>{newData?.name} / USD</Typography>
+      </Box>
+
+      <Box>
         <Chart />
-      </div>
-      <div>
+      </Box>
+
+      <Box sx={{ mt: "10px" }}>
         <AmountForm />
-      </div>
-      <table>
-        <thead>
-          <tr>
-            <th>Информация</th>
-            <th>Данные о валюте</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Цена</td>
-            <td>{newData.priceUsd} $</td>
-          </tr>
-          <tr>
-            <td>Доступное предложение для торговли</td>
-            <td>{newData.supply} млн. $</td>
-          </tr>
-          <tr>
-            <td>Общее количество выпущенных активов</td>
-            <td>{newData.maxSupply} млн. $</td>
-          </tr>
-          <tr>
-            <td>Объем торгов за последние 24 часа</td>
-            <td>{newData.volumeUsd24Hr} млрд. $</td>
-          </tr>
-          <tr>
-            <td>Средняя цена по объёму за последние 24 часа</td>
-            <td>{newData.vwap24Hr} $</td>
-          </tr>
-          <tr>
-            <td>Процентное изменения цены за последние 24 часа</td>
-            <td>{newData.changePercent24Hr} %</td>
-          </tr>
-          <tr>
-            <td>Сайт</td>
-            <td>
-              <a href={newData.explorer}>{newData.explorer}</a>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <button onClick={() => handleClick()}>Назад</button>
+      </Box>
+
+      <TableContainer component={Paper}>
+        <Table sx={{ minWidth: 650 }} aria-label="simple table">
+          <TableHead>
+            <TableRow>
+              <TableCell>Информация</TableCell>
+              <TableCell>Данные о валюте</TableCell>
+            </TableRow>
+          </TableHead>
+
+          <TableBody>
+            <TableRow>
+              <TableCell>Цена</TableCell>
+              <TableCell>{newData.priceUsd} $</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>Доступное предложение для торговли</TableCell>
+              <TableCell>{newData.supply} млн. $</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>Общее количество выпущенных активов</TableCell>
+              <TableCell>{newData.maxSupply} млн. $</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>Объем торгов за последние 24 часа</TableCell>
+              <TableCell>{newData.volumeUsd24Hr} млрд. $</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>Средняя цена по объёму за последние 24 часа</TableCell>
+              <TableCell>{newData.vwap24Hr} $</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>
+                Процентное изменения цены за последние 24 часа
+              </TableCell>
+              <TableCell>{newData.changePercent24Hr} %</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>Сайт</TableCell>
+              <TableCell>
+                <Link
+                  href={newData.explorer}
+                  underline="none"
+                  sx={{ color: "#000000" }}
+                >
+                  {newData.explorer}
+                </Link>
+              </TableCell>
+            </TableRow>
+          </TableBody>
+        </Table>
+      </TableContainer>
     </Box>
   );
 };

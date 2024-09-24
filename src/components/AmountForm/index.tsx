@@ -55,7 +55,7 @@ export const AmountForm = (): JSX.Element => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <Typography>Enter quantity:</Typography>
+      <Typography sx={{ textAlign: "center" }}>Enter quantity:</Typography>
 
       <TextField
         hiddenLabel
