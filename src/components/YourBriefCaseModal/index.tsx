@@ -16,6 +16,7 @@ import {
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import MoneyOffCsredOutlinedIcon from "@mui/icons-material/MoneyOffCsredOutlined";
+import { ModalOpenClose } from "../AddCoinModal";
 
 const closeButtonStyled = {
   "&:hover": {
@@ -31,7 +32,10 @@ const closeButtonStyled = {
   color: "black",
 };
 
-export const YourBriefcaseModal = ({ open, setOpen }): JSX.Element => {
+export const YourBriefcaseModal = ({
+  open,
+  setOpen,
+}: ModalOpenClose): JSX.Element => {
   const getYourCoins = useAppSelector((state) => state.listMyCoins);
   const getTotal = useAppSelector((state) => state.listMyCoins);
   const amounts = getTotal

@@ -58,10 +58,8 @@ export const MainPage = (): JSX.Element => {
   }
 
   return (
-    <>
-      <Container maxWidth="lg">
-        <SwitchCoins newData={newData || []} />
-      </Container>
-    </>
+    <Container maxWidth="lg">
+      <SwitchCoins newData={newData || []} />
+    </Container>
   );
 };
