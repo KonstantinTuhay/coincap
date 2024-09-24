@@ -29,6 +29,17 @@ export type Coin = {
   timestamp?: number;
 };
 
+export type DataGraph = {
+  priceUsd: string;
+  time: number;
+  data: string;
+};
+
+export type GraphDetails = {
+  data: DataGraph[];
+  timestamp?: number;
+};
+
 export const apiCoins = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: `${import.meta.env.VITE_URL}` }),
   endpoints: (builder) => ({
@@ -52,7 +63,21 @@ export const apiCoins = createApi({
       },
       transformResponse: (response: Coin) => response.data,
     }),
+    getDetailsGraphic: builder.query<DataGraph[], string>({
+      query: (id) => {
+        return {
+          url: `/${id}/history?interval=d1`,
+          method: "GET",
+          headers,
+        };
+      },
+      transformResponse: (response: GraphDetails) => response.data,
+    }),
   }),
 });
 
-export const { useGetCoinsQuery, useGetDetailsCoinQuery } = apiCoins;
+export const {
+  useGetCoinsQuery,
+  useGetDetailsCoinQuery,
+  useGetDetailsGraphicQuery,
+} = apiCoins;

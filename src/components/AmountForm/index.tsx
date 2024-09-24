@@ -12,7 +12,7 @@ type Inputs = {
   test: number;
 };
 
-export const AmountForm = ({ setOpen }): JSX.Element => {
+export const AmountForm = (): JSX.Element => {
   const {
     register,
     handleSubmit,
@@ -51,7 +51,6 @@ export const AmountForm = ({ setOpen }): JSX.Element => {
       coinId: crypto.randomUUID(),
     };
     dispatch(getYourCoin(newObj));
-    setOpen(false);
   };
 
   return (
