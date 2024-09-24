@@ -9,18 +9,20 @@ import TextField from "@mui/material/TextField";
 import Alert from "@mui/material/Alert";
 import MonetizationOnOutlinedIcon from "@mui/icons-material/MonetizationOnOutlined";
 import styles from "./index.module.css";
+import { useNavigate } from "react-router-dom";
 
 type Inputs = {
   test: number;
 };
 
-export const AmountForm = (): JSX.Element => {
+export const AmountForm = ({ setOpen }): JSX.Element => {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<Inputs>();
 
+  const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const currentId = useAppSelector((state) => state.getDetailsCoin);
 
@@ -62,6 +64,8 @@ export const AmountForm = (): JSX.Element => {
       coinId: crypto.randomUUID(),
     };
     dispatch(getYourCoin(newObj));
+    navigate("/");
+    setOpen(false);
   };
 
   return (
