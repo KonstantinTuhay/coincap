@@ -1,7 +1,7 @@
 import { Data } from "../redux/apiCoins";
 
 export const changePriceArray = (data: Data[]) => {
-  const a = data?.map((item) => {
+  return data?.map((item) => {
     return {
       ...item,
       vwap24Hr: `${Number(item.vwap24Hr).toFixed(2)}`,
@@ -15,6 +15,4 @@ export const changePriceArray = (data: Data[]) => {
       volumeUsd24Hr: `${Number(item.volumeUsd24Hr?.slice(0, 3)) / 10}`,
     };
   });
-
-  return a;
 };

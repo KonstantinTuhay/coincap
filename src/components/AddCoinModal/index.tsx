@@ -10,6 +10,7 @@ import styles from "./index.module.css";
 export type ModalOpenClose = {
   open: boolean;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  amounts?: string;
 };
 
 const closeButtonStyled = {

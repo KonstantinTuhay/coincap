@@ -1,7 +1,7 @@
 import { Data } from "../redux/apiCoins";
 
 export const changePriceObject = (data: Data) => {
-  const a = {
+  return {
     ...data,
     vwap24Hr: `${Number(data.vwap24Hr).toFixed(2)}`,
     changePercent24Hr: `${Number(data.changePercent24Hr).toFixed(2)}`,
@@ -13,5 +13,4 @@ export const changePriceObject = (data: Data) => {
       : `${20}`,
     volumeUsd24Hr: `${Number(data.volumeUsd24Hr?.slice(0, 3)) / 10}`,
   };
-  return a;
 };

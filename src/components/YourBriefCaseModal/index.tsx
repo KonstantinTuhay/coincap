@@ -35,12 +35,9 @@ const closeButtonStyled = {
 export const YourBriefcaseModal = ({
   open,
   setOpen,
+  amounts,
 }: ModalOpenClose): JSX.Element => {
   const getYourCoins = useAppSelector((state) => state.listMyCoins);
-  const getTotal = useAppSelector((state) => state.listMyCoins);
-  const amounts = getTotal
-    ?.reduce((accum, item) => accum + +item.priceUsd * +item.quantity, 0)
-    .toFixed(2);
 
   const clickBack = () => {
     setOpen(false);

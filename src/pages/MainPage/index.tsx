@@ -3,6 +3,7 @@ import { SwitchCoins } from "../../components/SwitchCoins";
 import { useAppDispatch } from "../../hooks/hooks";
 import { setPopularCoins } from "../../redux/slices/popularCoins";
 import { changePriceArray } from "../../helpers/changePriceArray";
+import { threePopularCoins } from "../../helpers/threePopularCoins";
 import { Data, useGetCoinsQuery } from "../../redux/apiCoins";
 import { Container } from "@mui/material";
 import MonetizationOnOutlinedIcon from "@mui/icons-material/MonetizationOnOutlined";
@@ -15,7 +16,7 @@ export const MainPage = (): JSX.Element => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    dispatch(setPopularCoins(newData?.slice(0, 3) || []));
+    dispatch(setPopularCoins(threePopularCoins(newData || [])));
   }, [newData, dispatch]);
 
   if (isLoading) {
