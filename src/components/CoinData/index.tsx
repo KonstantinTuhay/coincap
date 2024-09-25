@@ -5,25 +5,26 @@ import { AddCoinModal } from "../AddCoinModal";
 import { useAppDispatch } from "../../hooks/hooks";
 import { useNavigate } from "react-router-dom";
 import { TableRow, TableCell, Button } from "@mui/material";
+import styles from "../../styles/CoinData/index.module.css";
 
 type Coin = {
   coin: Data;
 };
 
-const hoverRow = {
-  "&:hover": {
-    backgroundColor: "#80808029",
-    transition: "0.5s",
-  },
-};
+// const hoverRow = {
+//   "&:hover": {
+//     backgroundColor: "#80808029",
+//     transition: "0.5s",
+//   },
+// };
 
-const tableCeilStyle = {
-  padding: "10px",
-};
+// const tableCeilStyle = {
+//   padding: "10px",
+// };
 
-const buttonStyle = {
-  backgroundColor: "#028202e0",
-};
+// const buttonStyle = {
+//   backgroundColor: "#028202e0",
+// };
 
 export const CoinData = ({ coin }: Coin): JSX.Element => {
   const navigate = useNavigate();
@@ -57,30 +58,69 @@ export const CoinData = ({ coin }: Coin): JSX.Element => {
     <>
       <AddCoinModal open={open} setOpen={setOpen} />
 
-      <TableRow sx={hoverRow}>
-        <TableCell sx={tableCeilStyle} onClick={() => handleClick(id || "")}>
+      <TableRow
+        className={styles.hoverRow}
+        // sx={hoverRow}
+      >
+        <TableCell
+          className={styles.tableCeilStyle}
+          // sx={tableCeilStyle}
+          onClick={() => handleClick(id || "")}
+        >
           {rank}
         </TableCell>
-        <TableCell sx={tableCeilStyle} onClick={() => handleClick(id || "")}>
+        <TableCell
+          className={styles.tableCeilStyle}
+          // sx={tableCeilStyle}
+          onClick={() => handleClick(id || "")}
+        >
           {symbol}
         </TableCell>
-        <TableCell sx={tableCeilStyle} onClick={() => handleClick(id || "")}>
+        <TableCell
+          className={styles.tableCeilStyle}
+          // sx={tableCeilStyle}
+          onClick={() => handleClick(id || "")}
+        >
           {name}
         </TableCell>
-        <TableCell sx={tableCeilStyle} onClick={() => handleClick(id || "")}>
+        <TableCell
+          className={styles.tableCeilStyle}
+          // sx={tableCeilStyle}
+          onClick={() => handleClick(id || "")}
+        >
           {vwap24Hr} $
         </TableCell>
-        <TableCell sx={tableCeilStyle} onClick={() => handleClick(id || "")}>
+        <TableCell
+          className={styles.tableCeilStyle}
+          //sx={tableCeilStyle}
+          onClick={() => handleClick(id || "")}
+        >
           {changePercent24Hr} %
         </TableCell>
-        <TableCell sx={tableCeilStyle} onClick={() => handleClick(id || "")}>
+        <TableCell
+          className={styles.tableCeilStyle}
+          // sx={tableCeilStyle}
+          onClick={() => handleClick(id || "")}
+        >
           {marketCapUsd} млрд $
         </TableCell>
-        <TableCell sx={tableCeilStyle} onClick={() => handleClick(id || "")}>
+        <TableCell
+          className={styles.tableCeilStyle}
+          // sx={tableCeilStyle}
+          onClick={() => handleClick(id || "")}
+        >
           {priceUsd} $
         </TableCell>
-        <TableCell sx={tableCeilStyle} onClick={() => addCoin(id || "")}>
-          <Button variant="contained" sx={buttonStyle}>
+        <TableCell
+          className={styles.tableCeilStyle}
+          // sx={tableCeilStyle}
+          onClick={() => addCoin(id || "")}
+        >
+          <Button
+            variant="contained"
+            className={styles.buttonStyle}
+            // sx={buttonStyle}
+          >
             BUY
           </Button>
         </TableCell>
