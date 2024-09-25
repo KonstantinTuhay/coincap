@@ -21,22 +21,20 @@ export const YourListCoins = ({ yourCoin }: YourCoin): JSX.Element => {
   };
 
   return (
-    <>
-      <TableRow>
-        <TableCell>{name}</TableCell>
-        <TableCell>{priceUsd}</TableCell>
-        <TableCell>{quantity}</TableCell>
-        <TableCell>{priceUsd}</TableCell>
-        <TableCell>
-          <Button
-            onClick={() => handleSell(coinId || "")}
-            variant="contained"
-            sx={buttonSell}
-          >
-            SELL
-          </Button>
-        </TableCell>
-      </TableRow>
-    </>
+    <TableRow>
+      <TableCell>{name}</TableCell>
+      <TableCell>{priceUsd}</TableCell>
+      <TableCell>{quantity}</TableCell>
+      <TableCell>{priceUsd}</TableCell>
+      <TableCell>
+        <Button
+          onClick={() => handleSell(coinId || "")}
+          variant="contained"
+          sx={buttonSell}
+        >
+          SELL
+        </Button>
+      </TableCell>
+    </TableRow>
   );
 };
