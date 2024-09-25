@@ -7,7 +7,7 @@ import { threePopularCoins } from "../../helpers/threePopularCoins";
 import { Data, useGetCoinsQuery } from "../../redux/apiCoins";
 import { Container } from "@mui/material";
 import MonetizationOnOutlinedIcon from "@mui/icons-material/MonetizationOnOutlined";
-import styles from "./index.module.css";
+import styles from "../../styles/MainPage/index.module.css";
 
 export const MainPage = (): JSX.Element => {
   const { data, error, isLoading } = useGetCoinsQuery();
@@ -20,18 +20,7 @@ export const MainPage = (): JSX.Element => {
   }, [newData, dispatch]);
 
   if (isLoading) {
-    return (
-      <MonetizationOnOutlinedIcon
-        className={styles.animatTxt}
-        style={{
-          color: "#ffd900",
-          fontSize: "100px",
-          position: "relative",
-          left: "45%",
-          top: 150,
-        }}
-      />
-    );
+    return <MonetizationOnOutlinedIcon className={styles.animatIcon} />;
   }
 
   if (error) {

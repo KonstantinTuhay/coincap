@@ -19,7 +19,7 @@ import {
   Button,
 } from "@mui/material";
 import MonetizationOnOutlinedIcon from "@mui/icons-material/MonetizationOnOutlined";
-import styles from "./index.module.css";
+import styles from "../../styles/NameCurrency/index.module.css";
 
 export const NameCurrency = (): JSX.Element => {
   const navigate = useNavigate();
@@ -34,18 +34,7 @@ export const NameCurrency = (): JSX.Element => {
   const newData: Data = changePriceObject(data || {});
 
   if (isLoading) {
-    return (
-      <MonetizationOnOutlinedIcon
-        className={styles.animatTxt}
-        style={{
-          color: "#ffd900",
-          fontSize: "100px",
-          position: "relative",
-          left: "45%",
-          top: 150,
-        }}
-      />
-    );
+    return <MonetizationOnOutlinedIcon className={styles.animatIcon} />;
   }
 
   if (error) {
@@ -64,15 +53,9 @@ export const NameCurrency = (): JSX.Element => {
   }
 
   return (
-    <Box
-      sx={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-      }}
-    >
+    <Box className={styles.box}>
       <Button
-        sx={{ position: "relative", top: "40px", right: "370px" }}
+        className={styles.buttonBack}
         variant="outlined"
         onClick={() => handleClick()}
       >
@@ -80,7 +63,7 @@ export const NameCurrency = (): JSX.Element => {
       </Button>
 
       <Box>
-        <Typography variant="h5" sx={{ textAlign: "center" }}>
+        <Typography variant="h5" className={styles.coinSymbol}>
           {newData?.symbol}{" "}
         </Typography>
         <Typography>{newData?.name} / USD</Typography>
@@ -90,7 +73,7 @@ export const NameCurrency = (): JSX.Element => {
         <Chart />
       </Box>
 
-      <Box sx={{ mt: "10px" }}>
+      <Box className={styles.boxForm}>
         <AmountForm
           setOpen={function (): void {
             throw new Error("Function not implemented.");
@@ -99,7 +82,7 @@ export const NameCurrency = (): JSX.Element => {
       </Box>
 
       <TableContainer component={Paper}>
-        <Table sx={{ minWidth: 650 }} aria-label="simple table">
+        <Table className={styles.table} aria-label="simple table">
           <TableHead>
             <TableRow>
               <TableCell>Информация</TableCell>
@@ -140,7 +123,7 @@ export const NameCurrency = (): JSX.Element => {
                 <Link
                   href={newData.explorer}
                   underline="none"
-                  sx={{ color: "#000000" }}
+                  className={styles.site}
                 >
                   {newData.explorer}
                 </Link>

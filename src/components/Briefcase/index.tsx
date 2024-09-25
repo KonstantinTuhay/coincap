@@ -4,6 +4,7 @@ import { YourBriefcaseModal } from "../YourBriefCaseModal";
 import { countedMoney } from "../../helpers/countedMoney";
 import { Box, Typography } from "@mui/material";
 import WorkOutlineOutlinedIcon from "@mui/icons-material/WorkOutlineOutlined";
+import styles from "../../styles/Briefcase/index.module.css";
 
 export const Briefcase = (): JSX.Element => {
   const [open, setOpen] = useState<boolean>(false);
@@ -19,25 +20,14 @@ export const Briefcase = (): JSX.Element => {
     <>
       <YourBriefcaseModal open={open} setOpen={setOpen} amounts={amounts} />
 
-      <Box
-        sx={{
-          display: "flex",
-          marginRight: "300px",
-        }}
-      >
+      <Box className={styles.box}>
         <Box sx={{ cursor: "pointer" }}>
           <WorkOutlineOutlinedIcon
-            sx={{ fontSize: 80 }}
+            className={styles.boxCase}
             onClick={() => handleClick()}
           />
         </Box>
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            margin: "15px 0px 15px 10px",
-          }}
-        >
+        <Box className={styles.boxText}>
           <Typography>Total:</Typography>
           <Typography>{amounts} USD</Typography>
         </Box>

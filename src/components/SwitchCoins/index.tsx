@@ -13,25 +13,10 @@ import {
   Box,
   Typography,
 } from "@mui/material";
+import styles from "../../styles/SwitchCoins/index.module.css";
 
 type DataSwitch = {
   newData: Data[];
-};
-
-const hoverButton = {
-  "&:hover": {
-    borderRadius: "100%",
-    backgroundColor: "#00000016",
-    transition: "1s",
-  },
-  "&:disabled": {
-    color: "black",
-    backgroundColor: "#00000046",
-    transition: "2s",
-  },
-  padding: "14px 8px",
-  borderRadius: "100%",
-  color: "#000000a3",
 };
 
 export const SwitchCoins = ({ newData }: DataSwitch): JSX.Element => {
@@ -49,11 +34,9 @@ export const SwitchCoins = ({ newData }: DataSwitch): JSX.Element => {
   };
 
   return (
-    <Box
-      sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}
-    >
+    <Box className={styles.box}>
       <TableContainer component={Paper}>
-        <Table sx={{ minWidth: 650 }} aria-label="simple table">
+        <Table className={styles.table} aria-label="simple table">
           <TableHead>
             <HeadTable />
           </TableHead>
@@ -70,10 +53,10 @@ export const SwitchCoins = ({ newData }: DataSwitch): JSX.Element => {
       </TableContainer>
 
       <Box>
-        <Stack sx={{ display: "flex", flexDirection: "row", mt: "10px" }}>
+        <Stack className={styles.stack}>
           {Array.from({ length: totalPages }, (_, index) => (
             <Button
-              sx={hoverButton}
+              className={styles.buttonPagination}
               variant="text"
               key={index}
               onClick={() => handlePageChange(index + 1)}

@@ -1,6 +1,7 @@
 import { JSX } from "react";
 import { Data } from "../../redux/apiCoins";
 import { Typography, Box } from "@mui/material";
+import styles from "../../styles/PopularCoin/index.module.css";
 
 type PopularCoin = {
   popularCoin: Data;
@@ -8,15 +9,9 @@ type PopularCoin = {
 
 export const PopularCoin = ({ popularCoin }: PopularCoin): JSX.Element => {
   return (
-    <Box
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        marginLeft: "20px",
-      }}
-    >
-      <Typography style={{ margin: "0px" }}>{popularCoin.name}</Typography>
-      <Typography style={{}}>{popularCoin.priceUsd} $</Typography>
+    <Box className={styles.box}>
+      <Typography>{popularCoin.name}</Typography>
+      <Typography>{popularCoin.priceUsd} $</Typography>
     </Box>
   );
 };
