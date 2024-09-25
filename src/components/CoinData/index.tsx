@@ -1,4 +1,4 @@
-import { JSX, useState } from "react";
+import { JSX, useState, MouseEvent } from "react";
 import { Data } from "../../redux/apiCoins";
 import { getCoin } from "../../redux/slices/getDetailsCoin";
 import { AddCoinModal } from "../AddCoinModal";
@@ -16,14 +16,20 @@ export const CoinData = ({ coin }: Coin): JSX.Element => {
 
   const dispatch = useAppDispatch();
 
-  const handleClick = (id: string) => {
-    dispatch(getCoin(id));
-    navigate("/coininformation");
-  };
-
-  const addCoin = (id: string) => {
-    dispatch(getCoin(id));
-    setOpen(true);
+  const handleClick = (
+    id: string,
+    e: MouseEvent<
+      HTMLTableRowElement | HTMLTableCellElement,
+      globalThis.MouseEvent
+    >
+  ) => {
+    if ((e.target as HTMLElement).tagName === "BUTTON") {
+      dispatch(getCoin(id));
+      setOpen(true);
+    } else {
+      dispatch(getCoin(id));
+      navigate("/coininformation");
+    }
   };
 
   const {
@@ -43,52 +49,24 @@ export const CoinData = ({ coin }: Coin): JSX.Element => {
     <>
       <AddCoinModal open={open} setOpen={setOpen} />
 
-      <TableRow className={styles.hoverRow}>
-        <TableCell
-          className={styles.tableCeilStyle}
-          onClick={() => handleClick(id || "")}
-        >
-          {rank}
-        </TableCell>
-        <TableCell
-          className={styles.tableCeilStyle}
-          onClick={() => handleClick(id || "")}
-        >
-          {symbol}
-        </TableCell>
-        <TableCell
-          className={styles.tableCeilStyle}
-          onClick={() => handleClick(id || "")}
-        >
-          {name}
-        </TableCell>
-        <TableCell
-          className={styles.tableCeilStyle}
-          onClick={() => handleClick(id || "")}
-        >
-          {vwap24Hr} $
-        </TableCell>
-        <TableCell
-          className={styles.tableCeilStyle}
-          onClick={() => handleClick(id || "")}
-        >
+      <TableRow
+        className={styles.hoverRow}
+        onClick={(e) => handleClick(id || "", e)}
+      >
+        <TableCell className={styles.tableCeilStyle}>{rank}</TableCell>
+        <TableCell className={styles.tableCeilStyle}>{symbol}</TableCell>
+        <TableCell className={styles.tableCeilStyle}>{name}</TableCell>
+        <TableCell className={styles.tableCeilStyle}>{vwap24Hr} $</TableCell>
+        <TableCell className={styles.tableCeilStyle}>
           {changePercent24Hr} %
         </TableCell>
-        <TableCell
-          className={styles.tableCeilStyle}
-          onClick={() => handleClick(id || "")}
-        >
+        <TableCell className={styles.tableCeilStyle}>
           {marketCapUsd} млрд $
         </TableCell>
+        <TableCell className={styles.tableCeilStyle}>{priceUsd} $</TableCell>
         <TableCell
           className={styles.tableCeilStyle}
-          onClick={() => handleClick(id || "")}
-        >
-          {priceUsd} $
-        </TableCell>
-        <TableCell
-          className={styles.tableCeilStyle}
-          onClick={() => addCoin(id || "")}
+          onClick={(e) => handleClick(id || "", e)}
         >
           <Button variant="contained" className={styles.buttonStyle}>
             BUY
