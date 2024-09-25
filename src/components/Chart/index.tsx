@@ -3,6 +3,7 @@ import { DetailedHTMLProps, HTMLAttributes, useEffect, useRef } from "react";
 import { useGetDetailsGraphicQuery } from "../../redux/apiCoins";
 import { useAppSelector } from "../../hooks/hooks";
 import { graphicsValue } from "../../helpers/graphicsValue";
+import { graphicsFormatDate } from "../../helpers/graphicsFormatDate";
 
 type InitialData = {
   value: number;
@@ -21,12 +22,7 @@ export const Chart = () => {
 
     return initialData.push({
       value: graphicsValue(item.priceUsd),
-      time:
-        date.getFullYear() +
-        "-" +
-        ("0" + (date.getMonth() + 1)).slice(-2) +
-        "-" +
-        ("0" + date.getDate()).slice(-2),
+      time: graphicsFormatDate(date),
     });
   });
 
