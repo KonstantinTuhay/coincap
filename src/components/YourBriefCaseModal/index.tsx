@@ -80,16 +80,21 @@ export const YourBriefcaseModal = ({
           <CloseIcon />
         </Button>
         <Box
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            mt: "15px",
-          }}
+          className={styles.boxTable}
+          // sx={{
+          //   display: "flex",
+          //   flexDirection: "column",
+          //   alignItems: "center",
+          //   mt: "15px",
+          // }}
         >
           {getYourCoins?.length ? (
             <TableContainer component={Paper}>
-              <Table sx={{ minWidth: 650 }} aria-label="simple table">
+              <Table
+                className={styles.table}
+                // sx={{ minWidth: 650 }}
+                aria-label="simple table"
+              >
                 <TableHead>
                   <TableRow>
                     <TableCell>Name</TableCell>
@@ -111,13 +116,24 @@ export const YourBriefcaseModal = ({
               </Table>
             </TableContainer>
           ) : (
-            <Box sx={{ mt: "10px" }}>
-              <MoneyOffCsredOutlinedIcon sx={{ fontSize: 40 }} />
+            <Box
+              className={styles.boxNoCoins}
+              // sx={{ mt: "10px" }}
+            >
+              <MoneyOffCsredOutlinedIcon
+                className={styles.noMoneyIcon}
+                // sx={{ fontSize: 40 }}
+              />
               <Typography variant="h5">You don't have coins</Typography>
             </Box>
           )}
 
-          <Typography sx={{ mt: "20px" }}>Total: {amounts} $</Typography>
+          <Typography
+            className={styles.total}
+            //  sx={{ mt: "20px" }}
+          >
+            Total: {amounts} $
+          </Typography>
         </Box>
       </Box>
     </Modal>
