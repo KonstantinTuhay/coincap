@@ -2,6 +2,7 @@ import { createChart, ColorType } from "lightweight-charts";
 import { DetailedHTMLProps, HTMLAttributes, useEffect, useRef } from "react";
 import { useGetDetailsGraphicQuery } from "../../redux/apiCoins";
 import { useAppSelector } from "../../hooks/hooks";
+import { graphicsValue } from "../../helpers/graphicsValue";
 
 type InitialData = {
   value: number;
@@ -19,7 +20,7 @@ export const Chart = () => {
     date.setTime(item.time);
 
     return initialData.push({
-      value: Number(Number(item.priceUsd).toFixed(2)),
+      value: graphicsValue(item.priceUsd),
       time:
         date.getFullYear() +
         "-" +
