@@ -5,7 +5,7 @@ import { useGetDetailsCoinQuery } from "../../redux/apiCoins";
 import { Button, Modal, Typography, Box } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import MonetizationOnOutlinedIcon from "@mui/icons-material/MonetizationOnOutlined";
-import styles from "./index.module.css";
+import styles from "../../styles/AddCoinModal/index.module.css";
 
 export type ModalOpenClose = {
   open: boolean;
@@ -27,18 +27,18 @@ const closeButtonStyled = {
   color: "black",
 };
 
-const style = {
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  width: 400,
-  bgcolor: "background.paper",
-  boxShadow: 24,
-  p: 4,
-  textAlign: "center",
-  borderRadius: "20px",
-};
+// const style = {
+//   position: "absolute",
+//   top: "50%",
+//   left: "50%",
+//   transform: "translate(-50%, -50%)",
+//   width: 400,
+//   bgcolor: "background.paper",
+//   boxShadow: 24,
+//   p: 4,
+//   textAlign: "center",
+//   borderRadius: "20px",
+// };
 
 export const AddCoinModal = ({
   open,
@@ -56,13 +56,13 @@ export const AddCoinModal = ({
     return (
       <MonetizationOnOutlinedIcon
         className={styles.animatTxt}
-        style={{
-          color: "#ffd900",
-          fontSize: "100px",
-          position: "relative",
-          left: "50%",
-          top: 150,
-        }}
+        // style={{
+        //   color: "#ffd900",
+        //   fontSize: "100px",
+        //   position: "relative",
+        //   left: "50%",
+        //   top: 150,
+        // }}
       />
     );
   }
@@ -91,14 +91,20 @@ export const AddCoinModal = ({
       aria-labelledby="modal-modal-title"
       aria-describedby="modal-modal-description"
     >
-      <Box sx={style}>
+      <Box
+        className={styles.styleBox}
+        // sx={style}
+      >
         <Typography variant="h4">Buy {data?.name}</Typography>
 
         <Button sx={closeButtonStyled} onClick={() => clickBack()}>
           <CloseIcon />
         </Button>
 
-        <Box sx={{ mt: 5 }}>
+        <Box
+          className={styles.boxForm}
+          //  sx={{ mt: 5 }}
+        >
           <AmountForm setOpen={setOpen} />
         </Box>
       </Box>

@@ -1,0 +1,34 @@
+.animatTxt {
+  animation: anim 1s linear infinite;
+  transition: all 0.5s ease;
+  color: #ffd900 !important;
+  font-size: 100px !important;
+  position: relative;
+  left: 50% !important;
+  top: 150px !important;
+}
+@keyframes anim {
+  0% {
+    transform: perspective(23rem) rotateY(0deg);
+  }
+  100% {
+    transform: perspective(10rem) rotateY(360deg);
+  }
+}
+
+.styleBox {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  background-color: white;
+  box-shadow: 24px;
+  padding: 30px;
+  text-align: center;
+  border-radius: 20px;
+}
+
+.boxForm {
+  margin-top: 5px;
+}
