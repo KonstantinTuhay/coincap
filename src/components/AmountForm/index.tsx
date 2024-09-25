@@ -7,7 +7,7 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { Button, Typography, TextField, Alert, Box } from "@mui/material";
 import MonetizationOnOutlinedIcon from "@mui/icons-material/MonetizationOnOutlined";
 import { useNavigate } from "react-router-dom";
-import styles from "./index.module.css";
+import styles from "../../styles/AmountForm/index.module.css";
 
 type Inputs = {
   test: number;
@@ -35,11 +35,11 @@ export const AmountForm = ({ setOpen }: ModalFunc): JSX.Element => {
     return (
       <MonetizationOnOutlinedIcon
         className={styles.animatTxt}
-        style={{
-          color: "#ffd900",
-          fontSize: "100px",
-          position: "relative",
-        }}
+        // style={{
+        //   color: "#ffd900",
+        //   fontSize: "100px",
+        //   position: "relative",
+        // }}
       />
     );
   }
@@ -72,7 +72,12 @@ export const AmountForm = ({ setOpen }: ModalFunc): JSX.Element => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <Typography sx={{ textAlign: "center" }}>Enter quantity:</Typography>
+      <Typography
+        className={styles.textQuantity}
+        // sx={{ textAlign: "center" }}
+      >
+        Enter quantity:
+      </Typography>
 
       <TextField
         hiddenLabel
@@ -80,11 +85,12 @@ export const AmountForm = ({ setOpen }: ModalFunc): JSX.Element => {
         placeholder="Введите количество"
         variant="filled"
         size="small"
-        sx={{
-          m: "20px 0px",
-          border: "1px solid #028202e0",
-          borderRadius: "10px 0px 0px 10px",
-        }}
+        className={styles.textField}
+        // sx={{
+        //   m: "20px 0px",
+        //   border: "1px solid #028202e0",
+        //   borderRadius: "10px 0px 0px 10px",
+        // }}
         type="text"
         {...register("test", {
           pattern: /^\d+([.]?\d+)?$/,
@@ -92,14 +98,15 @@ export const AmountForm = ({ setOpen }: ModalFunc): JSX.Element => {
       />
 
       <Button
-        sx={{
-          m: "20px 0px",
-          border: "1px solid #028202e0",
-          backgroundColor: "#028202e0",
-          borderRadius: "0px 10px 10px 0px",
-          color: "white",
-          height: 42,
-        }}
+        className={styles.buttonBuy}
+        // sx={{
+        //   m: "20px 0px",
+        //   border: "1px solid #028202e0",
+        //   backgroundColor: "#028202e0",
+        //   borderRadius: "0px 10px 10px 0px",
+        //   color: "white",
+        //   height: 42,
+        // }}
         type="submit"
       >
         BUY
