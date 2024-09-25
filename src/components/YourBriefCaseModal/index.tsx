@@ -1,7 +1,6 @@
 import { JSX } from "react";
 import { useAppSelector } from "../../hooks/hooks";
 import { YourListCoins } from "../YourListCoins";
-import { countedMoney } from "../../helpers/countedMoney";
 import {
   Box,
   Modal,
@@ -36,10 +35,9 @@ const closeButtonStyled = {
 export const YourBriefcaseModal = ({
   open,
   setOpen,
+  amounts,
 }: ModalOpenClose): JSX.Element => {
   const getYourCoins = useAppSelector((state) => state.listMyCoins);
-  const getTotal = useAppSelector((state) => state.listMyCoins);
-  const amounts = countedMoney(getTotal);
 
   const clickBack = () => {
     setOpen(false);

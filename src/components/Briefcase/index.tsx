@@ -17,7 +17,7 @@ export const Briefcase = (): JSX.Element => {
 
   return (
     <>
-      <YourBriefcaseModal open={open} setOpen={setOpen} />
+      <YourBriefcaseModal open={open} setOpen={setOpen} amounts={amounts} />
 
       <Box
         sx={{
