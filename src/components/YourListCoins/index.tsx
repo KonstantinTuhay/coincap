@@ -2,14 +2,15 @@ import { JSX } from "react";
 import { useAppDispatch } from "../../hooks/hooks";
 import { InitialState, sellCoin } from "../../redux/slices/listMyCoins";
 import { TableRow, TableCell, Button } from "@mui/material";
+import styles from "../../styles/YourListCoins/index.module.css";
 
 type YourCoin = {
   yourCoin: InitialState;
 };
 
-const buttonSell = {
-  backgroundColor: "#ff0000b0",
-};
+// const buttonSell = {
+//   backgroundColor: "#ff0000b0",
+// };
 
 export const YourListCoins = ({ yourCoin }: YourCoin): JSX.Element => {
   const { name, priceUsd, quantity, coinId } = yourCoin;
@@ -28,9 +29,10 @@ export const YourListCoins = ({ yourCoin }: YourCoin): JSX.Element => {
       <TableCell>{priceUsd}</TableCell>
       <TableCell>
         <Button
+          className={styles.buttonSell}
           onClick={() => handleSell(coinId || "")}
           variant="contained"
-          sx={buttonSell}
+          // sx={buttonSell}
         >
           SELL
         </Button>

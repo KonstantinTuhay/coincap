@@ -17,20 +17,21 @@ import {
 import CloseIcon from "@mui/icons-material/Close";
 import MoneyOffCsredOutlinedIcon from "@mui/icons-material/MoneyOffCsredOutlined";
 import { ModalOpenClose } from "../AddCoinModal";
+import styles from "../../styles/YourBriefCaseModal/index.module.css";
 
-const closeButtonStyled = {
-  "&:hover": {
-    backgroundColor: "#E84034",
-    border: "1px solid #E84034",
-    color: "white",
-  },
-  position: "absolute",
-  top: 5,
-  right: 5,
-  border: "1px solid  #000000",
-  borderRadius: "20px",
-  color: "black",
-};
+// const closeButtonStyled = {
+//   "&:hover": {
+//     backgroundColor: "#E84034",
+//     border: "1px solid #E84034",
+//     color: "white",
+//   },
+//   position: "absolute",
+//   top: 5,
+//   right: 5,
+//   border: "1px solid  #000000",
+//   borderRadius: "20px",
+//   color: "black",
+// };
 
 export const YourBriefcaseModal = ({
   open,
@@ -43,18 +44,18 @@ export const YourBriefcaseModal = ({
     setOpen(false);
   };
 
-  const style = {
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    width: 700,
-    bgcolor: "background.paper",
-    boxShadow: 24,
-    p: 4,
-    textAlign: "center",
-    borderRadius: "20px",
-  };
+  // const style = {
+  //   position: "absolute",
+  //   top: "50%",
+  //   left: "50%",
+  //   transform: "translate(-50%, -50%)",
+  //   width: 700,
+  //   bgcolor: "background.paper",
+  //   boxShadow: 24,
+  //   p: 4,
+  //   textAlign: "center",
+  //   borderRadius: "20px",
+  // };
 
   const handleClose = () => setOpen(false);
 
@@ -65,10 +66,17 @@ export const YourBriefcaseModal = ({
       aria-labelledby="modal-modal-title"
       aria-describedby="modal-modal-description"
     >
-      <Box sx={style}>
+      <Box
+        className={styles.box}
+        // sx={style}
+      >
         <Typography variant="h4">Investment Portfolio</Typography>
 
-        <Button sx={closeButtonStyled} onClick={() => clickBack()}>
+        <Button
+          className={styles.closeButton}
+          // sx={closeButtonStyled}
+          onClick={() => clickBack()}
+        >
           <CloseIcon />
         </Button>
         <Box

@@ -1,6 +1,12 @@
-.animatTxt {
+.animatIcon {
   animation: anim 1s linear infinite;
   transition: all 0.5s ease;
+  color: #ffd900;
+  /* font-size: 100px; */
+  position: relative;
+  left: 45%;
+  top: 150px;
+  transform: scale(100);
 }
 @keyframes anim {
   0% {
