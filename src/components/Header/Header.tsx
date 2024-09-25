@@ -8,14 +8,7 @@ import styles from "../../styles/Header/index.module.css";
 export const Header = (): JSX.Element => {
   return (
     <Container maxWidth="lg">
-      <Box
-        className={styles.box}
-        // style={{
-        //   display: "flex",
-        //   justifyContent: "space-between",
-        //   marginTop: "15px",
-        // }}
-      >
+      <Box className={styles.box}>
         <PopularСryptoCurrencies />
         <Briefcase />
       </Box>

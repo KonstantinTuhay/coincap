@@ -13,33 +13,6 @@ export type ModalOpenClose = {
   amounts?: string;
 };
 
-const closeButtonStyled = {
-  "&:hover": {
-    backgroundColor: "#E84034",
-    border: "1px solid #E84034",
-    color: "white",
-  },
-  position: "absolute",
-  top: 5,
-  right: 5,
-  border: "1px solid  #000000",
-  borderRadius: "20px",
-  color: "black",
-};
-
-// const style = {
-//   position: "absolute",
-//   top: "50%",
-//   left: "50%",
-//   transform: "translate(-50%, -50%)",
-//   width: 400,
-//   bgcolor: "background.paper",
-//   boxShadow: 24,
-//   p: 4,
-//   textAlign: "center",
-//   borderRadius: "20px",
-// };
-
 export const AddCoinModal = ({
   open,
   setOpen,
@@ -53,18 +26,7 @@ export const AddCoinModal = ({
   const { data, error, isLoading } = useGetDetailsCoinQuery(currentId);
 
   if (isLoading) {
-    return (
-      <MonetizationOnOutlinedIcon
-        className={styles.animatTxt}
-        // style={{
-        //   color: "#ffd900",
-        //   fontSize: "100px",
-        //   position: "relative",
-        //   left: "50%",
-        //   top: 150,
-        // }}
-      />
-    );
+    return <MonetizationOnOutlinedIcon className={styles.animatTxt} />;
   }
 
   if (error) {
@@ -91,20 +53,14 @@ export const AddCoinModal = ({
       aria-labelledby="modal-modal-title"
       aria-describedby="modal-modal-description"
     >
-      <Box
-        className={styles.styleBox}
-        // sx={style}
-      >
+      <Box className={styles.styleBox}>
         <Typography variant="h4">Buy {data?.name}</Typography>
 
-        <Button sx={closeButtonStyled} onClick={() => clickBack()}>
+        <Button className={styles.closeButton} onClick={() => clickBack()}>
           <CloseIcon />
         </Button>
 
-        <Box
-          className={styles.boxForm}
-          //  sx={{ mt: 5 }}
-        >
+        <Box className={styles.boxForm}>
           <AmountForm setOpen={setOpen} />
         </Box>
       </Box>

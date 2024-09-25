@@ -8,24 +8,11 @@ export const PopularСryptoCurrencies = (): JSX.Element => {
   const popularCoins = useAppSelector((state) => state.popularCoins);
 
   return (
-    <Box
-      className={styles.box}
-      // style={{
-      //   display: "flex",
-      //   flexDirection: "column",
-      //   marginLeft: "170px",
-      // }}
-    >
-      <Typography
-        className={styles.popular}
-        // sx={{ textDecoration: "underline", ml: "20px" }}
-      >
+    <Box className={styles.box}>
+      <Typography className={styles.popular}>
         Popular cryptocurrencies:
       </Typography>
-      <Box
-        className={styles.boxCoin}
-        // style={{ display: "flex", flexDirection: "row", marginTop: "5px" }}
-      >
+      <Box className={styles.boxCoin}>
         {popularCoins.map((popularCoin) => (
           <PopularCoin key={crypto.randomUUID()} popularCoin={popularCoin} />
         ))}

@@ -9,14 +9,7 @@ type PopularCoin = {
 
 export const PopularCoin = ({ popularCoin }: PopularCoin): JSX.Element => {
   return (
-    <Box
-      className={styles.box}
-      // style={{
-      //   display: "flex",
-      //   flexDirection: "column",
-      //   marginLeft: "20px",
-      // }}
-    >
+    <Box className={styles.box}>
       <Typography>{popularCoin.name}</Typography>
       <Typography>{popularCoin.priceUsd} $</Typography>
     </Box>

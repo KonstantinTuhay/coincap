@@ -8,10 +8,6 @@ type YourCoin = {
   yourCoin: InitialState;
 };
 
-// const buttonSell = {
-//   backgroundColor: "#ff0000b0",
-// };
-
 export const YourListCoins = ({ yourCoin }: YourCoin): JSX.Element => {
   const { name, priceUsd, quantity, coinId } = yourCoin;
 
@@ -32,7 +28,6 @@ export const YourListCoins = ({ yourCoin }: YourCoin): JSX.Element => {
           className={styles.buttonSell}
           onClick={() => handleSell(coinId || "")}
           variant="contained"
-          // sx={buttonSell}
         >
           SELL
         </Button>

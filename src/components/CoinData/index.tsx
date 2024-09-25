@@ -11,21 +11,6 @@ type Coin = {
   coin: Data;
 };
 
-// const hoverRow = {
-//   "&:hover": {
-//     backgroundColor: "#80808029",
-//     transition: "0.5s",
-//   },
-// };
-
-// const tableCeilStyle = {
-//   padding: "10px",
-// };
-
-// const buttonStyle = {
-//   backgroundColor: "#028202e0",
-// };
-
 export const CoinData = ({ coin }: Coin): JSX.Element => {
   const navigate = useNavigate();
 
@@ -58,69 +43,54 @@ export const CoinData = ({ coin }: Coin): JSX.Element => {
     <>
       <AddCoinModal open={open} setOpen={setOpen} />
 
-      <TableRow
-        className={styles.hoverRow}
-        // sx={hoverRow}
-      >
+      <TableRow className={styles.hoverRow}>
         <TableCell
           className={styles.tableCeilStyle}
-          // sx={tableCeilStyle}
           onClick={() => handleClick(id || "")}
         >
           {rank}
         </TableCell>
         <TableCell
           className={styles.tableCeilStyle}
-          // sx={tableCeilStyle}
           onClick={() => handleClick(id || "")}
         >
           {symbol}
         </TableCell>
         <TableCell
           className={styles.tableCeilStyle}
-          // sx={tableCeilStyle}
           onClick={() => handleClick(id || "")}
         >
           {name}
         </TableCell>
         <TableCell
           className={styles.tableCeilStyle}
-          // sx={tableCeilStyle}
           onClick={() => handleClick(id || "")}
         >
           {vwap24Hr} $
         </TableCell>
         <TableCell
           className={styles.tableCeilStyle}
-          //sx={tableCeilStyle}
           onClick={() => handleClick(id || "")}
         >
           {changePercent24Hr} %
         </TableCell>
         <TableCell
           className={styles.tableCeilStyle}
-          // sx={tableCeilStyle}
           onClick={() => handleClick(id || "")}
         >
           {marketCapUsd} млрд $
         </TableCell>
         <TableCell
           className={styles.tableCeilStyle}
-          // sx={tableCeilStyle}
           onClick={() => handleClick(id || "")}
         >
           {priceUsd} $
         </TableCell>
         <TableCell
           className={styles.tableCeilStyle}
-          // sx={tableCeilStyle}
           onClick={() => addCoin(id || "")}
         >
-          <Button
-            variant="contained"
-            className={styles.buttonStyle}
-            // sx={buttonStyle}
-          >
+          <Button variant="contained" className={styles.buttonStyle}>
             BUY
           </Button>
         </TableCell>

@@ -34,18 +34,7 @@ export const NameCurrency = (): JSX.Element => {
   const newData: Data = changePriceObject(data || {});
 
   if (isLoading) {
-    return (
-      <MonetizationOnOutlinedIcon
-        className={styles.animatIcon}
-        // style={{
-        //   color: "#ffd900",
-        //   fontSize: "100px",
-        //   position: "relative",
-        //   left: "45%",
-        //   top: 150,
-        // }}
-      />
-    );
+    return <MonetizationOnOutlinedIcon className={styles.animatIcon} />;
   }
 
   if (error) {
@@ -64,17 +53,9 @@ export const NameCurrency = (): JSX.Element => {
   }
 
   return (
-    <Box
-      className={styles.box}
-      // sx={{
-      //   display: "flex",
-      //   flexDirection: "column",
-      //   alignItems: "center",
-      // }}
-    >
+    <Box className={styles.box}>
       <Button
         className={styles.buttonBack}
-        // sx={{ position: "relative", top: "40px", right: "370px" }}
         variant="outlined"
         onClick={() => handleClick()}
       >
@@ -82,11 +63,7 @@ export const NameCurrency = (): JSX.Element => {
       </Button>
 
       <Box>
-        <Typography
-          variant="h5"
-          className={styles.coinSymbol}
-          // sx={{ textAlign: "center" }}
-        >
+        <Typography variant="h5" className={styles.coinSymbol}>
           {newData?.symbol}{" "}
         </Typography>
         <Typography>{newData?.name} / USD</Typography>
@@ -96,10 +73,7 @@ export const NameCurrency = (): JSX.Element => {
         <Chart />
       </Box>
 
-      <Box
-        className={styles.boxForm}
-        // sx={{ mt: "10px" }}
-      >
+      <Box className={styles.boxForm}>
         <AmountForm
           setOpen={function (): void {
             throw new Error("Function not implemented.");
@@ -108,11 +82,7 @@ export const NameCurrency = (): JSX.Element => {
       </Box>
 
       <TableContainer component={Paper}>
-        <Table
-          className={styles.table}
-          // sx={{ minWidth: 650 }}
-          aria-label="simple table"
-        >
+        <Table className={styles.table} aria-label="simple table">
           <TableHead>
             <TableRow>
               <TableCell>Информация</TableCell>
@@ -154,7 +124,6 @@ export const NameCurrency = (): JSX.Element => {
                   href={newData.explorer}
                   underline="none"
                   className={styles.site}
-                  // sx={{ color: "#000000" }}
                 >
                   {newData.explorer}
                 </Link>

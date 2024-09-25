@@ -32,16 +32,7 @@ export const AmountForm = ({ setOpen }: ModalFunc): JSX.Element => {
   const newData = changePriceObject(data || {});
 
   if (isLoading) {
-    return (
-      <MonetizationOnOutlinedIcon
-        className={styles.animatTxt}
-        // style={{
-        //   color: "#ffd900",
-        //   fontSize: "100px",
-        //   position: "relative",
-        // }}
-      />
-    );
+    return <MonetizationOnOutlinedIcon className={styles.animatTxt} />;
   }
 
   if (error) {
@@ -72,12 +63,7 @@ export const AmountForm = ({ setOpen }: ModalFunc): JSX.Element => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <Typography
-        className={styles.textQuantity}
-        // sx={{ textAlign: "center" }}
-      >
-        Enter quantity:
-      </Typography>
+      <Typography className={styles.textQuantity}>Enter quantity:</Typography>
 
       <TextField
         hiddenLabel
@@ -86,29 +72,13 @@ export const AmountForm = ({ setOpen }: ModalFunc): JSX.Element => {
         variant="filled"
         size="small"
         className={styles.textField}
-        // sx={{
-        //   m: "20px 0px",
-        //   border: "1px solid #028202e0",
-        //   borderRadius: "10px 0px 0px 10px",
-        // }}
         type="text"
         {...register("test", {
           pattern: /^\d+([.]?\d+)?$/,
         })}
       />
 
-      <Button
-        className={styles.buttonBuy}
-        // sx={{
-        //   m: "20px 0px",
-        //   border: "1px solid #028202e0",
-        //   backgroundColor: "#028202e0",
-        //   borderRadius: "0px 10px 10px 0px",
-        //   color: "white",
-        //   height: 42,
-        // }}
-        type="submit"
-      >
+      <Button className={styles.buttonBuy} type="submit">
         BUY
       </Button>
 

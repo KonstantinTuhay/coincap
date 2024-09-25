@@ -19,22 +19,6 @@ type DataSwitch = {
   newData: Data[];
 };
 
-// const hoverButton = {
-//   "&:hover": {
-//     borderRadius: "100%",
-//     backgroundColor: "#00000016",
-//     transition: "1s",
-//   },
-//   "&:disabled": {
-//     color: "black",
-//     backgroundColor: "#00000046",
-//     transition: "2s",
-//   },
-//   padding: "14px 8px",
-//   borderRadius: "100%",
-//   color: "#000000a3",
-// };
-
 export const SwitchCoins = ({ newData }: DataSwitch): JSX.Element => {
   const itemsPerPage = 10;
   const [currentPage, setCurrentPage] = useState(1);
@@ -50,16 +34,9 @@ export const SwitchCoins = ({ newData }: DataSwitch): JSX.Element => {
   };
 
   return (
-    <Box
-      className={styles.box}
-      // sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}
-    >
+    <Box className={styles.box}>
       <TableContainer component={Paper}>
-        <Table
-          className={styles.table}
-          // sx={{ minWidth: 650 }}
-          aria-label="simple table"
-        >
+        <Table className={styles.table} aria-label="simple table">
           <TableHead>
             <HeadTable />
           </TableHead>
@@ -76,14 +53,10 @@ export const SwitchCoins = ({ newData }: DataSwitch): JSX.Element => {
       </TableContainer>
 
       <Box>
-        <Stack
-          className={styles.stack}
-          // sx={{ display: "flex", flexDirection: "row", mt: "10px" }}
-        >
+        <Stack className={styles.stack}>
           {Array.from({ length: totalPages }, (_, index) => (
             <Button
               className={styles.buttonPagination}
-              // sx={hoverButton}
               variant="text"
               key={index}
               onClick={() => handlePageChange(index + 1)}

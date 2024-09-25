@@ -32,3 +32,18 @@
 .boxForm {
   margin-top: 5px;
 }
+
+.closeButton {
+  position: absolute;
+  top: -60px;
+  right: -187px;
+  border: 1px solid #000000 !important;
+  border-radius: 20px !important;
+  color: #000000 !important;
+}
+
+.closeButton:hover {
+  background-color: #e84034 !important;
+  border: 1px solid #e84034 !important;
+  color: white !important;
+}
