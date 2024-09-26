@@ -7,8 +7,8 @@ const popularCoins = createSlice({
   name: "threepopularcoins",
   initialState,
   reducers: {
-    setPopularCoins: (state, action: PayloadAction<Data[]>) => {
-      return (state = action.payload);
+    setPopularCoins: (_state, action: PayloadAction<Data[]>) => {
+      return (_state = action.payload);
     },
   },
 });

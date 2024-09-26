@@ -8,8 +8,8 @@ const getDetailsCoin = createSlice({
   name: "getDetailsCoin",
   initialState,
   reducers: {
-    getCoin: (state, action: PayloadAction<string>) => {
-      return (state = action.payload);
+    getCoin: (_state, action: PayloadAction<string>) => {
+      return (_state = action.payload);
     },
   },
 });

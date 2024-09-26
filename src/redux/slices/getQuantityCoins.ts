@@ -8,8 +8,8 @@ const getQuantityCoins = createSlice({
   name: "getQuantity",
   initialState,
   reducers: {
-    getQuantity: (state, action: PayloadAction<string>) => {
-      return (state = action.payload);
+    getQuantity: (_state, action: PayloadAction<string>) => {
+      return (_state = action.payload);
     },
   },
 });

@@ -15,24 +15,18 @@
 3. Установка зависимостей
    `npm install`
 
-4. Необходимо создать .env файл для установки приватного ключа и URL
-
-- `VITE_KEY = "c26fc0f1-c207-4496-a4aa-1501b12f3e2e"`
-- `VITE_URL = "https://api.coincap.io/v2"`
-
-5. Запуск проекта
+4. Запуск проекта
    `npm run dev`
 
 ## Стек технологий
 
 - TypeScript
 - React
-- Redux/RTK/RTK Query
-- HTML, CSS(modules)
+- Redux-persist/RTK/RTK Query
+- CSS(modules)
 - Material UI
 - React Router
 - React Hook Form
-- REST API
 
 ## Описание коммитов
 
