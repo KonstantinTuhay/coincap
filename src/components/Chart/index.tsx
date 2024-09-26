@@ -1,5 +1,11 @@
 import { createChart, ColorType } from "lightweight-charts";
-import { DetailedHTMLProps, HTMLAttributes, useEffect, useRef } from "react";
+import {
+  DetailedHTMLProps,
+  MutableRefObject,
+  HTMLAttributes,
+  useEffect,
+  useRef,
+} from "react";
 import { useGetDetailsGraphicQuery } from "../../redux/apiCoins";
 import { useAppSelector } from "../../hooks/hooks";
 import { graphicsValue } from "../../helpers/graphicsValue";
@@ -14,6 +20,7 @@ export const Chart = () => {
   const currentId = useAppSelector((state) => state.getDetailsCoin);
   const { data } = useGetDetailsGraphicQuery(currentId);
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const initialData: InitialData[] = [];
 
   data?.map((item) => {
@@ -26,14 +33,14 @@ export const Chart = () => {
     });
   });
 
-  const chartContainerRef:
-    | React.MutableRefObject<undefined>
-    | DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> =
-    useRef();
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const chartContainerRef: MutableRefObject<any> &
+    DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> =
+    useRef(undefined);
 
   useEffect(() => {
     const handleResize = () => {
-      chart.applyOptions({ width: chartContainerRef?.current?.clientWidth });
+      chart.applyOptions({ width: chartContainerRef?.current });
     };
 
     const chart = createChart(chartContainerRef?.current, {
