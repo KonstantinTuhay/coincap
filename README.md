@@ -1,50 +1,47 @@
-# React + TypeScript + Vite
+# Coincap
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+На написание данной программы автора вдохновило популярность цифровой валюты в нашем мире. Примером для подражания являлся сайт (https://www.blockchain.com/ru/explorer) с возможностью просмотреть на графике текущую цену, настроение "толпы", купить валюту, продать валюту и многое другое.
 
-Currently, two official plugins are available:
+![Logotype](./public/coin.svg)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Установка
 
-## Expanding the ESLint configuration
+1. Клонирование репозитория
+   `git clone https://github.com/KonstantinTuhay/coincap.git`
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+2. Переход в директорию coincap
+   `cd coincap`
 
-- Configure the top-level `parserOptions` property like this:
+3. Установка зависимостей
+   `npm install`
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+4. Необходимо создать .env файл для установки приватного ключа и URL
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+`VITE_KEY = "c26fc0f1-c207-4496-a4aa-1501b12f3e2e"`
+`VITE_URL = "https://api.coincap.io/v2"`
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+5. Запуск проекта
+   `npm run dev`
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+## Стек технологий
+
+- TypeScript
+- React
+- Redux/RTK/RTK Query
+- HTML, CSS(modules)
+- Material UI
+- React Router
+- React Hook Form
+- REST API
+
+## Описание коммитов
+
+| Название | Описание                                      |
+| -------- | --------------------------------------------- |
+| set      | Установка зависимостей                        |
+| add      | Добавление нового функционала                 |
+| create   | Создание новой компоненты, страницы и т.д.    |
+| delete   | Удаление необязательных свойств, комментариев |
+| change   | Изменение стилей, функционала, компонент      |
+| fix      | Исправление ошибок                            |
+| typed    | Типизирование компонентов                     |
