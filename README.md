@@ -17,8 +17,8 @@
 
 4. Необходимо создать .env файл для установки приватного ключа и URL
 
-`VITE_KEY = "c26fc0f1-c207-4496-a4aa-1501b12f3e2e"`  
-`VITE_URL = "https://api.coincap.io/v2"`
+- `VITE_KEY = "c26fc0f1-c207-4496-a4aa-1501b12f3e2e"`
+- `VITE_URL = "https://api.coincap.io/v2"`
 
 5. Запуск проекта
    `npm run dev`
