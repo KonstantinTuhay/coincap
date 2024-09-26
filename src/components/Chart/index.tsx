@@ -20,6 +20,7 @@ export const Chart = () => {
   const currentId = useAppSelector((state) => state.getDetailsCoin);
   const { data } = useGetDetailsGraphicQuery(currentId);
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const initialData: InitialData[] = [];
 
   data?.map((item) => {
